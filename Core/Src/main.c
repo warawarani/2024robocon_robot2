@@ -50,7 +50,9 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint8_t wheelConFlag;
-
+uint32_t timerCount;
+uint16_t stateCount;
+uint8_t flag=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -68,7 +70,19 @@ void WheelPowControl(double vertical, double beside);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if (htim == &htim6)
+  {
+    timerCount++;
+    if (timerCount >= 1000)
+    {
+      stateCount++;
+      flag=1;
+      timerCount = 0;
+    }
+  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -109,13 +123,61 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
-  int x = 128, y = 64;
+  HAL_TIM_Base_Start_IT(&htim6);
+  int x = 64, y = 64;
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    if (flag)
+    {
+      switch (stateCount)
+      {
+      case 0:
+        x = 64;
+        y = 128;
+        break;
+      case 2:
+        x = 64;
+        y = 0;
+        break;
+      case 4:
+        x = 128;
+        y = 64;
+        break;
+      case 6:
+        x = 0;
+        y = 64;
+        break;
+      case 8:
+        x = 128;
+        y = 128;
+        break;
+      case 10:
+        x = 0;
+        y = 128;
+        break;
+      case 12:
+        x = 128;
+        y = 0;
+        break;
+      case 14:
+        x = 0;
+        y = 0;
+        break;
+      case 16:
+        x=64;
+        y=64;
+        break;
+      }
+      flag=0;
+    }
+    if(stateCount>=16){
+      stateCount=0;
+    }
     WheelPowControl(x, y);
 
     /* USER CODE END WHILE */
@@ -484,8 +546,9 @@ void WheelPowControl(double beside, double vertical)
   double radian;
   vertical -= (double)STICK_CENTER_POSITION;
   beside -= (double)STICK_CENTER_POSITION;
-  radian = atan2(vertical,beside);
+  radian = atan2(vertical, beside);
   double powerGain = (hypot(beside, vertical) / (2 * STICK_CENTER_POSITION));
+  powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, rightWheelPow);
