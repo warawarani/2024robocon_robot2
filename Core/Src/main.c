@@ -3,6 +3,7 @@
  ******************************************************************************
  * @file           : main.c
  * @brief          : Main program body
+ *                   2024robokon_robot2 proglam
  ******************************************************************************
  * @attention
  *
@@ -73,6 +74,7 @@ static void MX_USART2_UART_Init(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
+  /*受信した値を配列に格納*/
   if (huart == &huart2)
   {
     controlerVarBuffer[con_cnt] = U1RXbuffer;
