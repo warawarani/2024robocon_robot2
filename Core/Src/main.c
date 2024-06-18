@@ -1,20 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ *                   2024robokon_robot2 proglam
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -36,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define RX_LENGTH 8
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -49,7 +50,10 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+uint8_t U1RXbuffer;
+uint8_t controlerVarBuffer[RX_LENGTH];
+uint8_t controlerFlag;
+uint8_t con_cnt;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -67,7 +71,24 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
+  /*受信した値を格納*/
+  if (huart == &huart1)
+  {
+    controlerVarBuffer[con_cnt] = U1RXbuffer;
+    if (controlerVarBuffer[0] == 0x80)
+    {
+      con_cnt++;
+    }
+    if (con_cnt == RX_LENGTH)
+    {
+      con_cnt = 0;
+      controlerFlag = 1;
+    }
+  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -106,13 +127,28 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    if (controlerFlag)
+    {
+      controlerFlag = 0;
+      for(int i=0;i<RX_LENGTH;i++){
+        HAL_UART_Transmit(&huart2,&controlerVarBuffer[i],sizeof(controlerVarBuffer[i]),0xFFFF);
+      }
+    }
+    if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
+        __HAL_UART_GET_FLAG(&huart1, UART_FLAG_NE) ||
+        __HAL_UART_GET_FLAG(&huart1, UART_FLAG_FE) ||
+        __HAL_UART_GET_FLAG(&huart1, UART_FLAG_PE))
+    {
+      HAL_UART_AbortReceive_IT(&huart1);
+      HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -428,7 +464,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 38400;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
