@@ -53,10 +53,10 @@ UART_HandleTypeDef huart2;
 uint8_t wheelConFlag;
 uint32_t timerCount;
 uint16_t stateCount;
-uint8_t flag = 0;
+uint8_t timerFlag = 0;
 uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
-uint8_t controlerFlag;
+uint8_t controlerFlag=0;
 uint8_t con_cnt;
 /* USER CODE END PV */
 
@@ -83,7 +83,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (timerCount >= 1000)
     {
       stateCount++;
-      flag = 1;
+      timerFlag = 1;
       timerCount = 0;
     }
   }
@@ -147,15 +147,30 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
   HAL_TIM_Base_Start_IT(&htim6);
-  int x, y;
+  static int x, y;
+  static int encoderVal;
+
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
+  HAL_TIM_Encoder_Start(&htim1,TIM_CHANNEL_ALL);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    encoderVal=TIM1 -> CNT;
+    
+    if (timerFlag)
+    {
+      timerFlag = 0;
+    }
+    if (stateCount >= 16)
+    {
+      stateCount = 0;
+    }
+    WheelPowControl(x, y);
+
     if (controlerFlag)
     {
       controlerFlag = 0;
@@ -171,15 +186,7 @@ int main(void)
       HAL_UART_AbortReceive_IT(&huart1);
       HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
     }
-    if (flag)
-    {
-      flag = 0;
-    }
-    if (stateCount >= 16)
-    {
-      stateCount = 0;
-    }
-    WheelPowControl(x, y);
+    
 
     /* USER CODE END WHILE */
 
