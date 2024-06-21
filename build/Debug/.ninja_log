@@ -30,3 +30,7 @@
 77	722	7406537991610468	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
 41	788	7406537992316558	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
 788	1341	7406537997715645	2024robocon_robot2.elf	35e9913c082e7734
+53	451	7406662974860286	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
+57	457	7406662974939870	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj	b8ad97ec40a5ddfa
+14	464	7406662975015025	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
+465	919	7406662979420676	2024robocon_robot2.elf	35e9913c082e7734

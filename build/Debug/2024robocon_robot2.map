@@ -349,6 +349,12 @@ Discarded input sections
  .bss           0x00000000        0x0 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .bss.wheelConFlag
                 0x00000000        0x1 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .text.IndividualOpelation
+                0x00000000       0x3c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .data.powerA.1
+                0x00000000        0x2 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .data.powerB.0
+                0x00000000        0x2 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .group         0x00000000        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
  .group         0x00000000        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
  .group         0x00000000        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
@@ -3264,7 +3270,7 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
                 0x08000000                g_pfnVectors
                 0x08000188                        . = ALIGN (0x4)
 
-.text           0x08000188     0x7958
+.text           0x08000188     0x79a8
                 0x08000188                        . = ALIGN (0x4)
  *(.text)
  .text          0x08000188       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
@@ -3323,476 +3329,476 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .text.HAL_UART_RxCpltCallback
                 0x08000bb4       0x6c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
                 0x08000bb4                HAL_UART_RxCpltCallback
- .text.main     0x08000c20      0x14c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .text.main     0x08000c20      0x180 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
                 0x08000c20                main
  .text.SystemClock_Config
-                0x08000d6c       0xaa CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
-                0x08000d6c                SystemClock_Config
- *fill*         0x08000e16        0x2 
+                0x08000da0       0xaa CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08000da0                SystemClock_Config
+ *fill*         0x08000e4a        0x2 
  .text.MX_TIM1_Init
-                0x08000e18       0xb4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08000e4c       0xb4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_TIM3_Init
-                0x08000ecc       0xf8 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08000f00       0xf8 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_TIM6_Init
-                0x08000fc4       0x6c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08000ff8       0x6c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_TIM17_Init
-                0x08001030       0xf4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08001064       0xf4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_USART1_UART_Init
-                0x08001124       0x60 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08001158       0x60 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_USART2_UART_Init
-                0x08001184       0x60 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x080011b8       0x60 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.MX_GPIO_Init
-                0x080011e4       0x94 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x08001218       0xb0 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .text.WheelPowControl
-                0x08001278      0x1a4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
-                0x08001278                WheelPowControl
+                0x080012c8      0x1a4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x080012c8                WheelPowControl
  .text.Error_Handler
-                0x0800141c        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
-                0x0800141c                Error_Handler
+                0x0800146c        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x0800146c                Error_Handler
  .text.NMI_Handler
-                0x08001428        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001428                NMI_Handler
+                0x08001478        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001478                NMI_Handler
  .text.HardFault_Handler
-                0x08001430        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001430                HardFault_Handler
+                0x08001480        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001480                HardFault_Handler
  .text.MemManage_Handler
-                0x08001438        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001438                MemManage_Handler
+                0x08001488        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001488                MemManage_Handler
  .text.BusFault_Handler
-                0x08001440        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001440                BusFault_Handler
+                0x08001490        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001490                BusFault_Handler
  .text.UsageFault_Handler
-                0x08001448        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001448                UsageFault_Handler
+                0x08001498        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001498                UsageFault_Handler
  .text.SVC_Handler
-                0x08001450        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001450                SVC_Handler
+                0x080014a0        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014a0                SVC_Handler
  .text.DebugMon_Handler
-                0x0800145e        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x0800145e                DebugMon_Handler
+                0x080014ae        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014ae                DebugMon_Handler
  .text.PendSV_Handler
-                0x0800146c        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x0800146c                PendSV_Handler
+                0x080014bc        0xe CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014bc                PendSV_Handler
  .text.SysTick_Handler
-                0x0800147a        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x0800147a                SysTick_Handler
- *fill*         0x08001486        0x2 
+                0x080014ca        0xc CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014ca                SysTick_Handler
+ *fill*         0x080014d6        0x2 
  .text.TIM1_TRG_COM_TIM17_IRQHandler
-                0x08001488       0x1c CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x08001488                TIM1_TRG_COM_TIM17_IRQHandler
+                0x080014d8       0x1c CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014d8                TIM1_TRG_COM_TIM17_IRQHandler
  .text.USART1_IRQHandler
-                0x080014a4       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x080014a4                USART1_IRQHandler
+                0x080014f4       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x080014f4                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x080014b8       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x080014b8                USART2_IRQHandler
+                0x08001508       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x08001508                USART2_IRQHandler
  .text.TIM6_DAC1_IRQHandler
-                0x080014cc       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                0x080014cc                TIM6_DAC1_IRQHandler
+                0x0800151c       0x14 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x0800151c                TIM6_DAC1_IRQHandler
  .text.HAL_MspInit
-                0x080014e0       0x48 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x080014e0                HAL_MspInit
+                0x08001530       0x48 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x08001530                HAL_MspInit
  .text.HAL_TIM_Encoder_MspInit
-                0x08001528       0x98 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x08001528                HAL_TIM_Encoder_MspInit
+                0x08001578       0x98 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x08001578                HAL_TIM_Encoder_MspInit
  .text.HAL_TIM_PWM_MspInit
-                0x080015c0       0x40 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x080015c0                HAL_TIM_PWM_MspInit
+                0x08001610       0x40 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x08001610                HAL_TIM_PWM_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x08001600       0x84 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x08001600                HAL_TIM_Base_MspInit
+                0x08001650       0x84 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x08001650                HAL_TIM_Base_MspInit
  .text.HAL_TIM_MspPostInit
-                0x08001684       0xf4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x08001684                HAL_TIM_MspPostInit
+                0x080016d4       0xf4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x080016d4                HAL_TIM_MspPostInit
  .text.HAL_UART_MspInit
-                0x08001778      0x148 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                0x08001778                HAL_UART_MspInit
+                0x080017c8      0x148 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x080017c8                HAL_UART_MspInit
  .text.HAL_TIM_Base_Init
-                0x080018c0       0xae CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x080018c0                HAL_TIM_Base_Init
- *fill*         0x0800196e        0x2 
+                0x08001910       0xae CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001910                HAL_TIM_Base_Init
+ *fill*         0x080019be        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x08001970       0xb8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001970                HAL_TIM_Base_Start_IT
+                0x080019c0       0xb8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080019c0                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_PWM_Init
-                0x08001a28       0xae CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001a28                HAL_TIM_PWM_Init
- *fill*         0x08001ad6        0x2 
+                0x08001a78       0xae CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001a78                HAL_TIM_PWM_Init
+ *fill*         0x08001b26        0x2 
  .text.HAL_TIM_PWM_Start
-                0x08001ad8      0x1d8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001ad8                HAL_TIM_PWM_Start
+                0x08001b28      0x1d8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001b28                HAL_TIM_PWM_Start
  .text.HAL_TIM_Encoder_Init
-                0x08001cb0      0x14c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001cb0                HAL_TIM_Encoder_Init
+                0x08001d00      0x14c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001d00                HAL_TIM_Encoder_Init
  .text.HAL_TIM_Encoder_Start
-                0x08001dfc      0x11c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001dfc                HAL_TIM_Encoder_Start
+                0x08001e4c      0x11c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001e4c                HAL_TIM_Encoder_Start
  .text.HAL_TIM_IRQHandler
-                0x08001f18      0x23e CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08001f18                HAL_TIM_IRQHandler
- *fill*         0x08002156        0x2 
+                0x08001f68      0x23e CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08001f68                HAL_TIM_IRQHandler
+ *fill*         0x080021a6        0x2 
  .text.HAL_TIM_PWM_ConfigChannel
-                0x08002158      0x228 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08002158                HAL_TIM_PWM_ConfigChannel
+                0x080021a8      0x228 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080021a8                HAL_TIM_PWM_ConfigChannel
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x08002380       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08002380                HAL_TIM_OC_DelayElapsedCallback
+                0x080023d0       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080023d0                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x08002394       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08002394                HAL_TIM_IC_CaptureCallback
+                0x080023e4       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080023e4                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x080023a8       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x080023a8                HAL_TIM_PWM_PulseFinishedCallback
+                0x080023f8       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080023f8                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x080023bc       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x080023bc                HAL_TIM_TriggerCallback
+                0x0800240c       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x0800240c                HAL_TIM_TriggerCallback
  .text.TIM_Base_SetConfig
-                0x080023d0       0xf0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x080023d0                TIM_Base_SetConfig
+                0x08002420       0xf0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08002420                TIM_Base_SetConfig
  .text.TIM_OC1_SetConfig
-                0x080024c0      0x10c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08002510      0x10c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .text.TIM_OC2_SetConfig
-                0x080025cc      0x100 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x080025cc                TIM_OC2_SetConfig
+                0x0800261c      0x100 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x0800261c                TIM_OC2_SetConfig
  .text.TIM_OC3_SetConfig
-                0x080026cc       0xfc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x0800271c       0xfc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .text.TIM_OC4_SetConfig
-                0x080027c8       0xc8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08002818       0xc8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .text.TIM_OC5_SetConfig
-                0x08002890       0xbc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x080028e0       0xbc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .text.TIM_OC6_SetConfig
-                0x0800294c       0xc0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x0800299c       0xc0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .text.TIM_CCxChannelCmd
-                0x08002a0c       0x4a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
-                0x08002a0c                TIM_CCxChannelCmd
- *fill*         0x08002a56        0x2 
+                0x08002a5c       0x4a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x08002a5c                TIM_CCxChannelCmd
+ *fill*         0x08002aa6        0x2 
  .text.HAL_TIMEx_MasterConfigSynchronization
-                0x08002a58       0xdc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
-                0x08002a58                HAL_TIMEx_MasterConfigSynchronization
+                0x08002aa8       0xdc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x08002aa8                HAL_TIMEx_MasterConfigSynchronization
  .text.HAL_TIMEx_ConfigBreakDeadTime
-                0x08002b34       0xf0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
-                0x08002b34                HAL_TIMEx_ConfigBreakDeadTime
+                0x08002b84       0xf0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x08002b84                HAL_TIMEx_ConfigBreakDeadTime
  .text.HAL_TIMEx_CommutCallback
-                0x08002c24       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
-                0x08002c24                HAL_TIMEx_CommutCallback
+                0x08002c74       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x08002c74                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x08002c38       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
-                0x08002c38                HAL_TIMEx_BreakCallback
+                0x08002c88       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x08002c88                HAL_TIMEx_BreakCallback
  .text.HAL_TIMEx_Break2Callback
-                0x08002c4c       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
-                0x08002c4c                HAL_TIMEx_Break2Callback
+                0x08002c9c       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x08002c9c                HAL_TIMEx_Break2Callback
  .text.HAL_Init
-                0x08002c60       0x2c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
-                0x08002c60                HAL_Init
+                0x08002cb0       0x2c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x08002cb0                HAL_Init
  .text.HAL_InitTick
-                0x08002c8c       0x60 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
-                0x08002c8c                HAL_InitTick
+                0x08002cdc       0x60 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x08002cdc                HAL_InitTick
  .text.HAL_IncTick
-                0x08002cec       0x28 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
-                0x08002cec                HAL_IncTick
+                0x08002d3c       0x28 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x08002d3c                HAL_IncTick
  .text.HAL_GetTick
-                0x08002d14       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
-                0x08002d14                HAL_GetTick
+                0x08002d64       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x08002d64                HAL_GetTick
  .text.HAL_RCC_OscConfig
-                0x08002d2c     0x107c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x08002d2c                HAL_RCC_OscConfig
+                0x08002d7c     0x107c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x08002d7c                HAL_RCC_OscConfig
  .text.HAL_RCC_ClockConfig
-                0x08003da8      0x2f8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x08003da8                HAL_RCC_ClockConfig
+                0x08003df8      0x2f8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x08003df8                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x080040a0       0xd4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x080040a0                HAL_RCC_GetSysClockFreq
+                0x080040f0       0xd4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x080040f0                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_GetHCLKFreq
-                0x08004174       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x08004174                HAL_RCC_GetHCLKFreq
+                0x080041c4       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x080041c4                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x0800418c       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x0800418c                HAL_RCC_GetPCLK1Freq
+                0x080041dc       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x080041dc                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x080041d0       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
-                0x080041d0                HAL_RCC_GetPCLK2Freq
+                0x08004220       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x08004220                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCCEx_PeriphCLKConfig
-                0x08004214      0x24c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
-                0x08004214                HAL_RCCEx_PeriphCLKConfig
+                0x08004264      0x24c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+                0x08004264                HAL_RCCEx_PeriphCLKConfig
  .text.HAL_GPIO_Init
-                0x08004460      0x2e4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
-                0x08004460                HAL_GPIO_Init
+                0x080044b0      0x2e4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+                0x080044b0                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x08004744       0x30 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
-                0x08004744                HAL_GPIO_WritePin
+                0x08004794       0x30 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+                0x08004794                HAL_GPIO_WritePin
  .text.HAL_DMA_Abort
-                0x08004774       0x72 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
-                0x08004774                HAL_DMA_Abort
+                0x080047c4       0x72 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+                0x080047c4                HAL_DMA_Abort
  .text.HAL_DMA_Abort_IT
-                0x080047e6       0x7c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
-                0x080047e6                HAL_DMA_Abort_IT
- *fill*         0x08004862        0x2 
+                0x08004836       0x7c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+                0x08004836                HAL_DMA_Abort_IT
+ *fill*         0x080048b2        0x2 
  .text.__NVIC_SetPriorityGrouping
-                0x08004864       0x48 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x080048b4       0x48 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .text.__NVIC_GetPriorityGrouping
-                0x080048ac       0x1c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x080048fc       0x1c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .text.__NVIC_EnableIRQ
-                0x080048c8       0x3c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004918       0x3c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .text.__NVIC_SetPriority
-                0x08004904       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004954       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .text.NVIC_EncodePriority
-                0x08004958       0x66 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
- *fill*         0x080049be        0x2 
+                0x080049a8       0x66 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ *fill*         0x08004a0e        0x2 
  .text.SysTick_Config
-                0x080049c0       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004a10       0x44 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08004a04       0x16 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
-                0x08004a04                HAL_NVIC_SetPriorityGrouping
+                0x08004a54       0x16 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004a54                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x08004a1a       0x38 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
-                0x08004a1a                HAL_NVIC_SetPriority
+                0x08004a6a       0x38 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004a6a                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x08004a52       0x1c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
-                0x08004a52                HAL_NVIC_EnableIRQ
+                0x08004aa2       0x1c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004aa2                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x08004a6e       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
-                0x08004a6e                HAL_SYSTICK_Config
+                0x08004abe       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x08004abe                HAL_SYSTICK_Config
  .text.HAL_UART_Init
-                0x08004a86       0x9c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08004a86                HAL_UART_Init
+                0x08004ad6       0x9c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08004ad6                HAL_UART_Init
  .text.HAL_UART_Transmit
-                0x08004b22      0x112 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08004b22                HAL_UART_Transmit
+                0x08004b72      0x112 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08004b72                HAL_UART_Transmit
  .text.HAL_UART_Receive_IT
-                0x08004c34       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08004c34                HAL_UART_Receive_IT
+                0x08004c84       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08004c84                HAL_UART_Receive_IT
  .text.HAL_UART_AbortReceive_IT
-                0x08004cbc      0x190 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08004cbc                HAL_UART_AbortReceive_IT
+                0x08004d0c      0x190 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08004d0c                HAL_UART_AbortReceive_IT
  .text.HAL_UART_IRQHandler
-                0x08004e4c      0x5cc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08004e4c                HAL_UART_IRQHandler
+                0x08004e9c      0x5cc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08004e9c                HAL_UART_IRQHandler
  .text.HAL_UART_TxCpltCallback
-                0x08005418       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08005418                HAL_UART_TxCpltCallback
+                0x08005468       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005468                HAL_UART_TxCpltCallback
  .text.HAL_UART_ErrorCallback
-                0x0800542c       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x0800542c                HAL_UART_ErrorCallback
+                0x0800547c       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x0800547c                HAL_UART_ErrorCallback
  .text.HAL_UART_AbortReceiveCpltCallback
-                0x08005440       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08005440                HAL_UART_AbortReceiveCpltCallback
+                0x08005490       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005490                HAL_UART_AbortReceiveCpltCallback
  .text.HAL_UARTEx_RxEventCallback
-                0x08005454       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08005454                HAL_UARTEx_RxEventCallback
+                0x080054a4       0x18 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x080054a4                HAL_UARTEx_RxEventCallback
  .text.UART_SetConfig
-                0x0800546c      0x26c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x0800546c                UART_SetConfig
+                0x080054bc      0x26c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x080054bc                UART_SetConfig
  .text.UART_AdvFeatureConfig
-                0x080056d8      0x144 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x080056d8                UART_AdvFeatureConfig
+                0x08005728      0x144 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005728                UART_AdvFeatureConfig
  .text.UART_CheckIdleState
-                0x0800581c      0x150 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x0800581c                UART_CheckIdleState
+                0x0800586c      0x150 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x0800586c                UART_CheckIdleState
  .text.UART_WaitOnFlagUntilTimeout
-                0x0800596c       0xce CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x0800596c                UART_WaitOnFlagUntilTimeout
- *fill*         0x08005a3a        0x2 
+                0x080059bc       0xce CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x080059bc                UART_WaitOnFlagUntilTimeout
+ *fill*         0x08005a8a        0x2 
  .text.UART_Start_Receive_IT
-                0x08005a3c      0x18c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
-                0x08005a3c                UART_Start_Receive_IT
+                0x08005a8c      0x18c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005a8c                UART_Start_Receive_IT
  .text.UART_EndRxTransfer
-                0x08005bc8       0xc8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005c18       0xc8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.UART_DMAAbortOnError
-                0x08005c90       0x2c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005ce0       0x2c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.UART_DMARxOnlyAbortCallback
-                0x08005cbc       0x4a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005d0c       0x4a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.UART_EndTransmit_IT
-                0x08005d06       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005d56       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.UART_RxISR_8BIT
-                0x08005d5a      0x1a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005daa      0x1a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.UART_RxISR_16BIT
-                0x08005f02      0x1a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x08005f52      0x1a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .text.HAL_UARTEx_WakeupCallback
-                0x080060aa       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
-                0x080060aa                HAL_UARTEx_WakeupCallback
- *fill*         0x080060be        0x2 
+                0x080060fa       0x14 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+                0x080060fa                HAL_UARTEx_WakeupCallback
+ *fill*         0x0800610e        0x2 
  .text.SystemInit
-                0x080060c0       0x24 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
-                0x080060c0                SystemInit
+                0x08006110       0x24 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+                0x08006110                SystemInit
  .text.Reset_Handler
-                0x080060e4       0x50 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
-                0x080060e4                Reset_Handler
+                0x08006134       0x50 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+                0x08006134                Reset_Handler
  .text.Default_Handler
-                0x08006134        0x2 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
-                0x08006134                RTC_Alarm_IRQHandler
-                0x08006134                TIM1_CC_IRQHandler
-                0x08006134                PVD_IRQHandler
-                0x08006134                TAMP_STAMP_IRQHandler
-                0x08006134                EXTI3_IRQHandler
-                0x08006134                EXTI0_IRQHandler
-                0x08006134                FPU_IRQHandler
-                0x08006134                CAN_TX_IRQHandler
-                0x08006134                TIM1_UP_TIM16_IRQHandler
-                0x08006134                ADC1_2_IRQHandler
-                0x08006134                SPI1_IRQHandler
-                0x08006134                CAN_SCE_IRQHandler
-                0x08006134                DMA1_Channel4_IRQHandler
-                0x08006134                USART3_IRQHandler
-                0x08006134                DMA1_Channel7_IRQHandler
-                0x08006134                TIM7_DAC2_IRQHandler
-                0x08006134                CAN_RX1_IRQHandler
-                0x08006134                I2C1_EV_IRQHandler
-                0x08006134                DMA1_Channel6_IRQHandler
-                0x08006134                TIM3_IRQHandler
-                0x08006134                RCC_IRQHandler
-                0x08006134                DMA1_Channel1_IRQHandler
-                0x08006134                Default_Handler
-                0x08006134                EXTI15_10_IRQHandler
-                0x08006134                COMP2_IRQHandler
-                0x08006134                EXTI9_5_IRQHandler
-                0x08006134                RTC_WKUP_IRQHandler
-                0x08006134                DMA1_Channel5_IRQHandler
-                0x08006134                EXTI4_IRQHandler
-                0x08006134                DMA1_Channel3_IRQHandler
-                0x08006134                WWDG_IRQHandler
-                0x08006134                TIM2_IRQHandler
-                0x08006134                EXTI1_IRQHandler
-                0x08006134                COMP4_6_IRQHandler
-                0x08006134                DMA1_Channel2_IRQHandler
-                0x08006134                FLASH_IRQHandler
-                0x08006134                CAN_RX0_IRQHandler
-                0x08006134                I2C1_ER_IRQHandler
-                0x08006134                EXTI2_TSC_IRQHandler
-                0x08006134                TIM1_BRK_TIM15_IRQHandler
- *fill*         0x08006136        0x2 
- .text.__errno  0x08006138        0xc C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
-                0x08006138                __errno
- .text.atan2    0x08006144        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_atan2.o)
-                0x08006144                atan2
- .text.hypot    0x08006148       0x68 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_hypot.o)
-                0x08006148                hypot
- .text.sin      0x080061b0       0xa8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
-                0x080061b0                sin
- .text.finite   0x08006258       0x16 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_finite.o)
-                0x08006258                finite
- *fill*         0x0800626e        0x2 
+                0x08006184        0x2 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+                0x08006184                RTC_Alarm_IRQHandler
+                0x08006184                TIM1_CC_IRQHandler
+                0x08006184                PVD_IRQHandler
+                0x08006184                TAMP_STAMP_IRQHandler
+                0x08006184                EXTI3_IRQHandler
+                0x08006184                EXTI0_IRQHandler
+                0x08006184                FPU_IRQHandler
+                0x08006184                CAN_TX_IRQHandler
+                0x08006184                TIM1_UP_TIM16_IRQHandler
+                0x08006184                ADC1_2_IRQHandler
+                0x08006184                SPI1_IRQHandler
+                0x08006184                CAN_SCE_IRQHandler
+                0x08006184                DMA1_Channel4_IRQHandler
+                0x08006184                USART3_IRQHandler
+                0x08006184                DMA1_Channel7_IRQHandler
+                0x08006184                TIM7_DAC2_IRQHandler
+                0x08006184                CAN_RX1_IRQHandler
+                0x08006184                I2C1_EV_IRQHandler
+                0x08006184                DMA1_Channel6_IRQHandler
+                0x08006184                TIM3_IRQHandler
+                0x08006184                RCC_IRQHandler
+                0x08006184                DMA1_Channel1_IRQHandler
+                0x08006184                Default_Handler
+                0x08006184                EXTI15_10_IRQHandler
+                0x08006184                COMP2_IRQHandler
+                0x08006184                EXTI9_5_IRQHandler
+                0x08006184                RTC_WKUP_IRQHandler
+                0x08006184                DMA1_Channel5_IRQHandler
+                0x08006184                EXTI4_IRQHandler
+                0x08006184                DMA1_Channel3_IRQHandler
+                0x08006184                WWDG_IRQHandler
+                0x08006184                TIM2_IRQHandler
+                0x08006184                EXTI1_IRQHandler
+                0x08006184                COMP4_6_IRQHandler
+                0x08006184                DMA1_Channel2_IRQHandler
+                0x08006184                FLASH_IRQHandler
+                0x08006184                CAN_RX0_IRQHandler
+                0x08006184                I2C1_ER_IRQHandler
+                0x08006184                EXTI2_TSC_IRQHandler
+                0x08006184                TIM1_BRK_TIM15_IRQHandler
+ *fill*         0x08006186        0x2 
+ .text.__errno  0x08006188        0xc C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+                0x08006188                __errno
+ .text.atan2    0x08006194        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_atan2.o)
+                0x08006194                atan2
+ .text.hypot    0x08006198       0x68 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_hypot.o)
+                0x08006198                hypot
+ .text.sin      0x08006200       0xa8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
+                0x08006200                sin
+ .text.finite   0x080062a8       0x16 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_finite.o)
+                0x080062a8                finite
+ *fill*         0x080062be        0x2 
  .text.__kernel_cos
-                0x08006270      0x18c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
-                0x08006270                __kernel_cos
- *fill*         0x080063fc        0x4 
+                0x080062c0      0x18c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
+                0x080062c0                __kernel_cos
+ *fill*         0x0800644c        0x4 
  .text.__kernel_sin
-                0x08006400      0x174 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
-                0x08006400                __kernel_sin
- *fill*         0x08006574        0x4 
+                0x08006450      0x174 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
+                0x08006450                __kernel_sin
+ *fill*         0x080065c4        0x4 
  .text.__ieee754_atan2
-                0x08006578      0x18c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
-                0x08006578                __ieee754_atan2
+                0x080065c8      0x18c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
+                0x080065c8                __ieee754_atan2
  .text.__ieee754_hypot
-                0x08006704      0x22c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_hypot.o)
-                0x08006704                __ieee754_hypot
+                0x08006754      0x22c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_hypot.o)
+                0x08006754                __ieee754_hypot
  .text.__ieee754_rem_pio2
-                0x08006930      0x3f8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
-                0x08006930                __ieee754_rem_pio2
- .text.atan     0x08006d28      0x330 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
-                0x08006d28                atan
- .text.fabs     0x08007058       0x10 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
-                0x08007058                fabs
+                0x08006980      0x3f8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x08006980                __ieee754_rem_pio2
+ .text.atan     0x08006d78      0x330 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
+                0x08006d78                atan
+ .text.fabs     0x080070a8       0x10 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
+                0x080070a8                fabs
  .text.__ieee754_sqrt
-                0x08007068      0x1b4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
-                0x08007068                __ieee754_sqrt
- *fill*         0x0800721c        0x4 
+                0x080070b8      0x1b4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
+                0x080070b8                __ieee754_sqrt
+ *fill*         0x0800726c        0x4 
  .text.__kernel_rem_pio2
-                0x08007220      0x6b0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x08007220                __kernel_rem_pio2
- .text.scalbn   0x080078d0       0xfc C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
-                0x080078d0                scalbn
- *fill*         0x080079cc        0x4 
- .text.floor    0x080079d0       0xf8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
-                0x080079d0                floor
+                0x08007270      0x6b0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x08007270                __kernel_rem_pio2
+ .text.scalbn   0x08007920       0xfc C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
+                0x08007920                scalbn
+ *fill*         0x08007a1c        0x4 
+ .text.floor    0x08007a20       0xf8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
+                0x08007a20                floor
  *(.glue_7)
- .glue_7        0x08007ac8        0x0 linker stubs
+ .glue_7        0x08007b18        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08007ac8        0x0 linker stubs
+ .glue_7t       0x08007b18        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08007ac8        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08007b18        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08007ac8        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08007ac8                _init
- .init          0x08007acc        0x8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08007b18        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08007b18                _init
+ .init          0x08007b1c        0x8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08007ad4        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x08007ad4                _fini
- .fini          0x08007ad8        0x8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x08007ae0                        . = ALIGN (0x4)
-                0x08007ae0                        _etext = .
+ .fini          0x08007b24        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08007b24                _fini
+ .fini          0x08007b28        0x8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08007b30                        . = ALIGN (0x4)
+                0x08007b30                        _etext = .
 
-.vfp11_veneer   0x08007ae0        0x0
- .vfp11_veneer  0x08007ae0        0x0 linker stubs
+.vfp11_veneer   0x08007b30        0x0
+ .vfp11_veneer  0x08007b30        0x0 linker stubs
 
-.v4_bx          0x08007ae0        0x0
- .v4_bx         0x08007ae0        0x0 linker stubs
+.v4_bx          0x08007b30        0x0
+ .v4_bx         0x08007b30        0x0 linker stubs
 
-.iplt           0x08007ae0        0x0
- .iplt          0x08007ae0        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08007b30        0x0
+ .iplt          0x08007b30        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08007ae0      0x280
-                0x08007ae0                        . = ALIGN (0x4)
+.rodata         0x08007b30      0x280
+                0x08007b30                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.aPLLMULFactorTable
-                0x08007ae0       0x10 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x08007b30       0x10 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
  .rodata.aPredivFactorTable
-                0x08007af0       0x10 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x08007b40       0x10 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
  .rodata.AHBPrescTable
-                0x08007b00       0x10 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
-                0x08007b00                AHBPrescTable
+                0x08007b50       0x10 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+                0x08007b50                AHBPrescTable
  .rodata.APBPrescTable
-                0x08007b10        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
-                0x08007b10                APBPrescTable
+                0x08007b60        0x8 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+                0x08007b60                APBPrescTable
  .rodata.CSWTCH.9
-                0x08007b18       0x18 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
+                0x08007b68       0x18 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
  .rodata.CSWTCH.8
-                0x08007b30       0x18 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
+                0x08007b80       0x18 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
  .rodata.npio2_hw
-                0x08007b48       0x80 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x08007b98       0x80 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x08007bc8      0x108 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x08007c18      0x108 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.atanlo
-                0x08007cd0       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
+                0x08007d20       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
  .rodata.atanhi
-                0x08007cf0       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
- .rodata.PIo2   0x08007d10       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x08007d40       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
+ .rodata.PIo2   0x08007d60       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x08007d50       0x10 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x08007d60                        . = ALIGN (0x4)
+                0x08007da0       0x10 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x08007db0                        . = ALIGN (0x4)
 
-.rel.dyn        0x08007d60        0x0
- .rel.iplt      0x08007d60        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08007db0        0x0
+ .rel.iplt      0x08007db0        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x08007d60        0x0
-                0x08007d60                        __exidx_start = .
+.ARM            0x08007db0        0x0
+                0x08007db0                        __exidx_start = .
  *(.ARM.exidx*)
-                0x08007d60                        __exidx_end = .
+                0x08007db0                        __exidx_end = .
 
-.preinit_array  0x08007d60        0x0
-                0x08007d60                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08007db0        0x0
+                0x08007db0                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08007d60                        PROVIDE (__preinit_array_end = .)
+                0x08007db0                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x08007d60        0x4
-                0x08007d60                        PROVIDE (__init_array_start = .)
+.init_array     0x08007db0        0x4
+                0x08007db0                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08007d60        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08007d64                        PROVIDE (__init_array_end = .)
+ .init_array    0x08007db0        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08007db4                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x08007d64        0x4
+.fini_array     0x08007db4        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08007d64        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08007db4        0x4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08007d68                        _sidata = LOADADDR (.data)
+                0x08007db8                        _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x70 load address 0x08007d68
+.data           0x20000000       0x70 load address 0x08007db8
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -3818,12 +3824,12 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .data.one      0x20000068        0x8 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
                 0x20000070                        . = ALIGN (0x4)
                 0x20000070                        _edata = .
-                0x08007dd8                        _siccmram = LOADADDR (.ccmram)
+                0x08007e28                        _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x20000070        0x0 load address 0x08007dd8
+.igot.plt       0x20000070        0x0 load address 0x08007e28
  .igot.plt      0x20000070        0x0 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x08007dd8
+.ccmram         0x10000000        0x0 load address 0x08007e28
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -3873,10 +3879,10 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .bss.con_cnt   0x20000415        0x1 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
                 0x20000415                con_cnt
  *fill*         0x20000416        0x2 
- .bss.encoderVal.2
+ .bss.encoderVal.4
                 0x20000418        0x4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .bss.x.1       0x2000041c        0x4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .bss.y.0       0x20000420        0x4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .bss.x.3       0x2000041c        0x4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .bss.y.2       0x20000420        0x4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .bss.uwTick    0x20000424        0x4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
                 0x20000424                uwTick
  *(COMMON)
@@ -3995,63 +4001,63 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
 LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_frame    0x00000000     0x3df0
+.debug_frame    0x00000000     0x3e18
  .debug_frame   0x00000000      0x144 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o)
  .debug_frame   0x00000144       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .debug_frame   0x00000164       0x2c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x00000190      0x1d0 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_frame   0x00000360      0x174 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
- .debug_frame   0x000004d4      0x184 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
- .debug_frame   0x00000658     0x121c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
- .debug_frame   0x00001874      0x688 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
- .debug_frame   0x00001efc      0x334 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
- .debug_frame   0x00002230      0x214 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
- .debug_frame   0x00002444       0xac CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
- .debug_frame   0x000024f0      0x14c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
- .debug_frame   0x0000263c      0x224 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
- .debug_frame   0x00002860      0x428 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
- .debug_frame   0x00002c88      0x9e8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
- .debug_frame   0x00003670      0x1b4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
- .debug_frame   0x00003824       0x58 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
- .debug_frame   0x0000387c       0xac C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00003928       0x50 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00003978       0xc4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x00003a3c       0x24 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
- .debug_frame   0x00003a60       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
- .debug_frame   0x00003a80       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_atan2.o)
- .debug_frame   0x00003aa0       0x4c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_hypot.o)
- .debug_frame   0x00003aec       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
- .debug_frame   0x00003b24       0x28 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_finite.o)
- .debug_frame   0x00003b4c       0x3c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
- .debug_frame   0x00003b88       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
- .debug_frame   0x00003bc8       0x44 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
- .debug_frame   0x00003c0c       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_hypot.o)
- .debug_frame   0x00003c4c       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
- .debug_frame   0x00003c8c       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
- .debug_frame   0x00003cc4       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
- .debug_frame   0x00003ce4       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
- .debug_frame   0x00003d1c       0x54 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
- .debug_frame   0x00003d70       0x2c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
- .debug_frame   0x00003d9c       0x30 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
- .debug_frame   0x00003dcc       0x24 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00000190      0x1f8 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_frame   0x00000388      0x174 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+ .debug_frame   0x000004fc      0x184 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+ .debug_frame   0x00000680     0x121c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+ .debug_frame   0x0000189c      0x688 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+ .debug_frame   0x00001f24      0x334 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+ .debug_frame   0x00002258      0x214 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+ .debug_frame   0x0000246c       0xac CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+ .debug_frame   0x00002518      0x14c CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+ .debug_frame   0x00002664      0x224 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+ .debug_frame   0x00002888      0x428 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ .debug_frame   0x00002cb0      0x9e8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+ .debug_frame   0x00003698      0x1b4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+ .debug_frame   0x0000384c       0x58 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+ .debug_frame   0x000038a4       0xac C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00003950       0x50 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x000039a0       0xc4 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x00003a64       0x24 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x00003a88       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_frame   0x00003aa8       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_atan2.o)
+ .debug_frame   0x00003ac8       0x4c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-w_hypot.o)
+ .debug_frame   0x00003b14       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_sin.o)
+ .debug_frame   0x00003b4c       0x28 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_finite.o)
+ .debug_frame   0x00003b74       0x3c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_cos.o)
+ .debug_frame   0x00003bb0       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_sin.o)
+ .debug_frame   0x00003bf0       0x44 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_atan2.o)
+ .debug_frame   0x00003c34       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_hypot.o)
+ .debug_frame   0x00003c74       0x40 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_rem_pio2.o)
+ .debug_frame   0x00003cb4       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_atan.o)
+ .debug_frame   0x00003cec       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_fabs.o)
+ .debug_frame   0x00003d0c       0x38 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-e_sqrt.o)
+ .debug_frame   0x00003d44       0x54 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-k_rem_pio2.o)
+ .debug_frame   0x00003d98       0x2c C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_scalbn.o)
+ .debug_frame   0x00003dc4       0x30 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-s_floor.o)
+ .debug_frame   0x00003df4       0x24 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
 
-.debug_info     0x00000000     0xfbeb
- .debug_info    0x00000000     0x1609 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_info    0x00001609      0xacb CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
- .debug_info    0x000020d4     0x1053 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
- .debug_info    0x00003127     0x2a52 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
- .debug_info    0x00005b79     0x156d CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
- .debug_info    0x000070e6      0x74a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
- .debug_info    0x00007830     0x14f1 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
- .debug_info    0x00008d21      0x550 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
- .debug_info    0x00009271      0x6a6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
- .debug_info    0x00009917      0x6e1 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
- .debug_info    0x00009ff8      0xa87 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
- .debug_info    0x0000aa7f     0x39a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
- .debug_info    0x0000e427      0xc92 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
- .debug_info    0x0000f0b9      0x407 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
- .debug_info    0x0000f4c0       0x30 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
- .debug_info    0x0000f4f0      0x6fb C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+.debug_info     0x00000000     0xfc46
+ .debug_info    0x00000000     0x1664 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_info    0x00001664      0xacb CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+ .debug_info    0x0000212f     0x1053 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+ .debug_info    0x00003182     0x2a52 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+ .debug_info    0x00005bd4     0x156d CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+ .debug_info    0x00007141      0x74a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+ .debug_info    0x0000788b     0x14f1 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+ .debug_info    0x00008d7c      0x550 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+ .debug_info    0x000092cc      0x6a6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+ .debug_info    0x00009972      0x6e1 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+ .debug_info    0x0000a053      0xa87 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ .debug_info    0x0000aada     0x39a8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+ .debug_info    0x0000e482      0xc92 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+ .debug_info    0x0000f114      0x407 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+ .debug_info    0x0000f51b       0x30 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+ .debug_info    0x0000f54b      0x6fb C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
 
 .debug_abbrev   0x00000000     0x224f
  .debug_abbrev  0x00000000      0x33b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
@@ -4071,194 +4077,194 @@ LOAD C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .debug_abbrev  0x000020cd       0x24 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
  .debug_abbrev  0x000020f1      0x15e C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_aranges  0x00000000      0xd48
+.debug_aranges  0x00000000      0xd50
  .debug_aranges
-                0x00000000       0x80 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x00000000       0x88 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .debug_aranges
-                0x00000080       0x80 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x00000088       0x80 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
  .debug_aranges
-                0x00000100       0x68 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x00000108       0x68 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
  .debug_aranges
-                0x00000168      0x3e0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x00000170      0x3e0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .debug_aranges
-                0x00000548      0x178 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x00000550      0x178 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
  .debug_aranges
-                0x000006c0       0xe0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x000006c8       0xe0 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
  .debug_aranges
-                0x000007a0       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x000007a8       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
  .debug_aranges
-                0x00000828       0x38 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+                0x00000830       0x38 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
  .debug_aranges
-                0x00000860       0x58 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+                0x00000868       0x58 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
  .debug_aranges
-                0x000008b8       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+                0x000008c0       0x88 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
  .debug_aranges
-                0x00000940      0x100 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x00000948      0x100 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .debug_aranges
-                0x00000a40      0x228 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x00000a48      0x228 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .debug_aranges
-                0x00000c68       0x70 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+                0x00000c70       0x70 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
  .debug_aranges
-                0x00000cd8       0x28 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+                0x00000ce0       0x28 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
  .debug_aranges
-                0x00000d00       0x28 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+                0x00000d08       0x28 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
  .debug_aranges
-                0x00000d28       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+                0x00000d30       0x20 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
 
 .debug_rnglists
-                0x00000000      0xa6a
+                0x00000000      0xa70
  .debug_rnglists
-                0x00000000       0x62 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                0x00000000       0x68 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
  .debug_rnglists
-                0x00000062       0x5b CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                0x00000068       0x5b CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
  .debug_rnglists
-                0x000000bd       0x4d CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                0x000000c3       0x4d CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
  .debug_rnglists
-                0x0000010a      0x328 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+                0x00000110      0x328 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
  .debug_rnglists
-                0x00000432      0x131 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+                0x00000438      0x131 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
  .debug_rnglists
-                0x00000563       0xa3 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+                0x00000569       0xa3 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
  .debug_rnglists
-                0x00000606       0x66 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+                0x0000060c       0x66 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
  .debug_rnglists
-                0x0000066c       0x27 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+                0x00000672       0x27 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
  .debug_rnglists
-                0x00000693       0x3f CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+                0x00000699       0x3f CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
  .debug_rnglists
-                0x000006d2       0x69 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+                0x000006d8       0x69 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
  .debug_rnglists
-                0x0000073b       0xbb CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+                0x00000741       0xbb CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
  .debug_rnglists
-                0x000007f6      0x1da CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+                0x000007fc      0x1da CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
  .debug_rnglists
-                0x000009d0       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+                0x000009d6       0x54 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
  .debug_rnglists
-                0x00000a24       0x1a CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+                0x00000a2a       0x1a CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
  .debug_rnglists
-                0x00000a3e       0x19 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+                0x00000a44       0x19 CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
  .debug_rnglists
-                0x00000a57       0x13 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+                0x00000a5d       0x13 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_macro    0x00000000    0x1b529
- .debug_macro   0x00000000      0x276 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000276      0xab4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000d2a      0x157 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000e81       0x2e CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000eaf       0x28 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000ed7       0x22 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000ef9       0x8e CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000f87       0x51 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00000fd8      0x103 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000010db       0x6a CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00001145      0x1df CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00001324       0x1c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00001340       0x22 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00001362       0xd9 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x0000143b      0xf07 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00002342    0x10be0 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00012f22       0x6d CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00012f8f     0x3558 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000164e7      0x189 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00016670       0x55 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000166c5      0x8f8 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00016fbd      0x304 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000172c1      0x1b5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017476      0x11b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017591      0x1d5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017766      0x1bc CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017922       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017956       0x3c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017992       0x57 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000179e9       0xc5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017aae      0x19f CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017c4d      0x22c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017e79       0x5b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017ed4       0xa5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017f79       0x81 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00017ffa       0xd3 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000180cd      0xa59 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00018b26       0x59 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00018b7f      0x5ba CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019139       0x44 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x0001917d      0x285 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019402       0xac CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000194ae       0x74 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019522       0x2a CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x0001954c       0x3c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019588       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000195bc       0x16 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000195d2       0x43 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019615       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019649       0x10 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019659       0x58 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x000196b1      0x1de CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x0001988f      0x369 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019bf8      0x19b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_macro   0x00019d93      0x1de CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
- .debug_macro   0x00019f71      0x1d4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
- .debug_macro   0x0001a145      0x1c6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
- .debug_macro   0x0001a30b      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
- .debug_macro   0x0001a4d0      0x1e9 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
- .debug_macro   0x0001a6b9      0x1e9 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
- .debug_macro   0x0001a8a2      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
- .debug_macro   0x0001aa67      0x1cc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
- .debug_macro   0x0001ac33      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
- .debug_macro   0x0001adf8      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
- .debug_macro   0x0001afbd      0x1e2 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
- .debug_macro   0x0001b19f      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
- .debug_macro   0x0001b364      0x1c5 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+.debug_macro    0x00000000    0x1b52f
+ .debug_macro   0x00000000      0x27c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0000027c      0xab4 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000d30      0x157 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000e87       0x2e CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000eb5       0x28 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000edd       0x22 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000eff       0x8e CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000f8d       0x51 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000fde      0x103 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000010e1       0x6a CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0000114b      0x1df CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0000132a       0x1c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00001346       0x22 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00001368       0xd9 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00001441      0xf07 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00002348    0x10be0 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00012f28       0x6d CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00012f95     0x3558 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000164ed      0x189 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00016676       0x55 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000166cb      0x8f8 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00016fc3      0x304 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000172c7      0x1b5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001747c      0x11b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017597      0x1d5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001776c      0x1bc CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017928       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001795c       0x3c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017998       0x57 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000179ef       0xc5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017ab4      0x19f CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017c53      0x22c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017e7f       0x5b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017eda       0xa5 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00017f7f       0x81 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00018000       0xd3 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000180d3      0xa59 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00018b2c       0x59 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00018b85      0x5ba CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001913f       0x44 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019183      0x285 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019408       0xac CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000194b4       0x74 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019528       0x2a CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019552       0x3c CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001958e       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000195c2       0x16 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000195d8       0x43 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001961b       0x34 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001964f       0x10 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x0001965f       0x58 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x000196b7      0x1de CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019895      0x369 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019bfe      0x19b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_macro   0x00019d99      0x1de CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+ .debug_macro   0x00019f77      0x1d4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+ .debug_macro   0x0001a14b      0x1c6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+ .debug_macro   0x0001a311      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+ .debug_macro   0x0001a4d6      0x1e9 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+ .debug_macro   0x0001a6bf      0x1e9 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+ .debug_macro   0x0001a8a8      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+ .debug_macro   0x0001aa6d      0x1cc CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+ .debug_macro   0x0001ac39      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+ .debug_macro   0x0001adfe      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ .debug_macro   0x0001afc3      0x1e2 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+ .debug_macro   0x0001b1a5      0x1c5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+ .debug_macro   0x0001b36a      0x1c5 CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
 
-.debug_line     0x00000000    0x1007c
- .debug_line    0x00000000      0xb50 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
- .debug_line    0x00000b50      0x7f4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
- .debug_line    0x00001344      0x8b0 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
- .debug_line    0x00001bf4     0x3c4b CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
- .debug_line    0x0000583f     0x19fe CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
- .debug_line    0x0000723d      0x982 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
- .debug_line    0x00007bbf     0x1356 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
- .debug_line    0x00008f15      0xa21 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
- .debug_line    0x00009936      0xae5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
- .debug_line    0x0000a41b      0xc6a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
- .debug_line    0x0000b085      0xb68 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
- .debug_line    0x0000bbed     0x3050 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
- .debug_line    0x0000ec3d      0xaf6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
- .debug_line    0x0000f733      0x74a CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
- .debug_line    0x0000fe7d       0x7a CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
- .debug_line    0x0000fef7      0x185 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+.debug_line     0x00000000    0x100b0
+ .debug_line    0x00000000      0xb84 CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+ .debug_line    0x00000b84      0x7f4 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+ .debug_line    0x00001378      0x8b0 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+ .debug_line    0x00001c28     0x3c4b CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+ .debug_line    0x00005873     0x19fe CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+ .debug_line    0x00007271      0x982 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+ .debug_line    0x00007bf3     0x1356 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+ .debug_line    0x00008f49      0xa21 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+ .debug_line    0x0000996a      0xae5 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+ .debug_line    0x0000a44f      0xc6a CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+ .debug_line    0x0000b0b9      0xb68 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ .debug_line    0x0000bc21     0x3050 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+ .debug_line    0x0000ec71      0xaf6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+ .debug_line    0x0000f767      0x74a CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+ .debug_line    0x0000feb1       0x7a CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+ .debug_line    0x0000ff2b      0x185 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_str      0x00000000    0xa4920
- .debug_str     0x00000000    0xa164b CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
-                              0xa19c3 (size before relaxing)
- .debug_str     0x000a164b      0x12b CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
-                              0x9dfaf (size before relaxing)
- .debug_str     0x000a1776      0x3a2 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
-                              0x9e368 (size before relaxing)
- .debug_str     0x000a1b18      0xce6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
+.debug_str      0x00000000    0xa4962
+ .debug_str     0x00000000    0xa168d CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj
+                              0xa1a05 (size before relaxing)
+ .debug_str     0x000a168d      0x12b CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj
+                              0x9dfb5 (size before relaxing)
+ .debug_str     0x000a17b8      0x3a2 CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj
+                              0x9e36e (size before relaxing)
+ .debug_str     0x000a1b5a      0xce6 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj
                               0x9e9e6 (size before relaxing)
- .debug_str     0x000a27fe      0x419 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
+ .debug_str     0x000a2840      0x419 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj
                               0x9e23c (size before relaxing)
- .debug_str     0x000a2c17      0x3c8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
+ .debug_str     0x000a2c59      0x3c8 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c.obj
                               0x9dcaf (size before relaxing)
- .debug_str     0x000a2fdf      0x2fd CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
+ .debug_str     0x000a3021      0x2fd CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c.obj
                               0x9da5f (size before relaxing)
- .debug_str     0x000a32dc       0xdf CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
+ .debug_str     0x000a331e       0xdf CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj
                               0x9d75e (size before relaxing)
- .debug_str     0x000a33bb      0x1b4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
+ .debug_str     0x000a33fd      0x1b4 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj
                               0x9d79e (size before relaxing)
- .debug_str     0x000a356f      0x232 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
+ .debug_str     0x000a35b1      0x232 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj
                               0x9d907 (size before relaxing)
- .debug_str     0x000a37a1      0x28d CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
+ .debug_str     0x000a37e3      0x28d CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj
                               0x9dbd4 (size before relaxing)
- .debug_str     0x000a3a2e      0x816 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
+ .debug_str     0x000a3a70      0x816 CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj
                               0x9e2e2 (size before relaxing)
- .debug_str     0x000a4244      0x1cf CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
+ .debug_str     0x000a4286      0x1cf CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj
                               0x9dbe7 (size before relaxing)
- .debug_str     0x000a4413       0x6c CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
+ .debug_str     0x000a4455       0x6c CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj
                               0x9d5bf (size before relaxing)
- .debug_str     0x000a447f       0x4c CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
+ .debug_str     0x000a44c1       0x4c CMakeFiles/2024robocon_robot2.dir/startup_stm32f303x8.s.obj
                                  0x72 (size before relaxing)
- .debug_str     0x000a44cb      0x455 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_str     0x000a450d      0x455 C:/ST/STM32CubeCLT_1.15.1/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-errno.o)
                                 0x52b (size before relaxing)
 
 .comment        0x00000000       0x43

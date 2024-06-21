@@ -561,16 +561,23 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void WheelPowControl(double beside, double vertical)
+
+/**
+ * @brief Control functions for differential two-wheel
+ * @param Horizontal Horizontal axis value of stick
+ * @param vertical Vertical axis value of stick
+ * @retval None
+ */
+void WheelPowControl(double beside, double Horizontal)
 {
   const int STICK_CENTER_POSITION = 0x40;
   double leftWheelPow;
   double rightWheelPow;
   double radian;
-  vertical -= (double)STICK_CENTER_POSITION;
+  Horizontal -= (double)STICK_CENTER_POSITION;
   beside -= (double)STICK_CENTER_POSITION;
-  radian = atan2(vertical, beside);
-  double powerGain = (hypot(beside, vertical) / (2 * STICK_CENTER_POSITION));
+  radian = atan2(Horizontal, beside);
+  double powerGain = (hypot(beside, Horizontal) / (2 * STICK_CENTER_POSITION));
   powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
