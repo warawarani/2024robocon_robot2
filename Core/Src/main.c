@@ -160,6 +160,7 @@ int main(void)
   while (1)
   {
     encoderVal=TIM1 -> CNT;
+    HAL_UART_Transmit(&huart2,&encoderVal,sizeof(encoderVal),0xFFFF);
     
     if (timerFlag)
     {
@@ -175,7 +176,7 @@ int main(void)
     {
       controlerFlag = 0;
       for(int i=0;i<RX_LENGTH;i++){
-        HAL_UART_Transmit(&huart2,&controlerVarBuffer[i],sizeof(controlerVarBuffer[i]),0xFFFF);
+        //HAL_UART_Transmit(&huart2,&controlerVarBuffer[i],sizeof(controlerVarBuffer[i]),0xFFFF);
       }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
