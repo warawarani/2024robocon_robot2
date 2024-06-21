@@ -38,6 +38,10 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define RX_LENGTH 8
+#define ROBOT2_1
+// #define ROBOT2_2
+// #define ROBOT2_3
+// #define ROBOT2_4
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -144,14 +148,19 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
+  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Base_Start_IT(&htim6);
+
   static int x, y;
   static int encoderVal;
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -570,26 +579,70 @@ void WheelPowControl(double beside, double vertical)
 }
 
 #ifdef ROBOT2_1
-void IndividualOpelation(){
-
+/**
+ * @brief This fanction is proglam for the robot2-X
+ * @note for the robot2-1
+ * @retval None
+ * @param paramA
+ * @param paramB
+ */
+void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+{
+  static uint16_t powerA = 500;
+  static uint16_t powerB = 500;
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
 #endif /*ROBOT2_1*/
 
 #ifdef ROBOT2_2
-void IndividualOpelation(){
-
+/**
+ * @brief This fanction is proglam for the robot2-X
+ * @note for the robot2-2
+ * @retval None
+ * @param paramA
+ * @param paramB
+ */
+void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+{
+  static uint16_t powerA = 500;
+  static uint16_t powerB = 500;
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
 #endif /*ROBOT2_1*/
 
 #ifdef ROBOT2_3
-void IndividualOpelation(){
-
+/**
+ * @brief This fanction is proglam for the robot2-X
+ * @note for the robot2-3
+ * @retval None
+ * @param paramA
+ * @param paramB
+ */
+void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+{
+  static uint16_t powerA = 500;
+  static uint16_t powerB = 500;
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
 #endif /*ROBOT2_1*/
 
 #ifdef ROBOT2_4
-void IndividualOpelation(){
-
+/**
+ * @brief This fanction is proglam for the robot2-X
+ * @note for the robot2-4
+ * @retval None
+ * @param paramA
+ * @param paramB
+ */
+void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+{
+  static uint16_t powerA = 500;
+  static uint16_t powerB = 500;
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
 #endif /*ROBOT2_1*/
 /* USER CODE END 4 */
