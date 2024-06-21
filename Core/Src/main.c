@@ -56,7 +56,7 @@ uint16_t stateCount;
 uint8_t timerFlag = 0;
 uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
-uint8_t controlerFlag=0;
+uint8_t controlerFlag;
 uint8_t con_cnt;
 /* USER CODE END PV */
 
@@ -175,8 +175,9 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
-      for(int i=0;i<RX_LENGTH;i++){
-        //HAL_UART_Transmit(&huart2,&controlerVarBuffer[i],sizeof(controlerVarBuffer[i]),0xFFFF);
+      for (int i = 0; i < RX_LENGTH; i++)
+      {
+        HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
       }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
@@ -187,7 +188,6 @@ int main(void)
       HAL_UART_AbortReceive_IT(&huart1);
       HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
     }
-    
 
     /* USER CODE END WHILE */
 
@@ -540,17 +540,23 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED1_Pin|LED2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED1_Pin LED2_Pin */
-  GPIO_InitStruct.Pin = LED1_Pin|LED2_Pin;
+  GPIO_InitStruct.Pin = LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED1_GPIO_Port, &GPIO_InitStruct);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /*Configure GPIO pin : LimitSw_Pin */
+  GPIO_InitStruct.Pin = LimitSw_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(LimitSw_GPIO_Port, &GPIO_InitStruct);
+
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
