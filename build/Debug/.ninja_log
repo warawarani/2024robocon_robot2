@@ -1,6 +1,6 @@
 # ninja log v5
-27	2964	7404880371168396	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
-32	2013	7404880355422476	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj	b8ad97ec40a5ddfa
+53	451	7406662974860286	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
+57	457	7406662974939870	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj	b8ad97ec40a5ddfa
 1444	2813	7404880364351873	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.c.obj	97faa79d02f584ad
 46	1298	7404880354676459	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c.obj	8ca20c87cec164c1
 1996	3143	7404880372137181	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c.obj	415f34ce679db626
@@ -9,7 +9,7 @@
 79	1444	7404880354838116	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c.obj	bae15f3f1729fe95
 2093	2845	7404880368807733	CMakeFiles/2024robocon_robot2.dir/Core/Src/system_stm32f3xx.c.obj	b6b1e5079925842d
 90	2006	7404880355253623	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c.obj	f2a792fbd147b568
-21	1428	7404880354676459	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
+14	464	7406662975015025	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
 85	1436	7404880354118079	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c.obj	540cd5cd809f5ea9
 37	2032	7404880357345025	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c.obj	7abc99b59b2f970
 1300	2043	7404880361963325	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c.obj	396a3a587da77201
@@ -24,13 +24,8 @@
 2822	3629	7404880378114847	CMakeFiles/2024robocon_robot2.dir/Core/Src/syscalls.c.obj	d6ffe2100eb03df5
 2032	3072	7404880371951896	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj	94fd7c8986776d91
 2043	2846	7404880368967887	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj	fc6485e7b274fe99
-3629	4118	7404880382644031	2024robocon_robot2.elf	9c5c32b3dd50b63e
-19	1015	7405919752525361	build.ninja	b13fb9138834be15
-82	719	7406537991590417	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj	b8ad97ec40a5ddfa
-77	722	7406537991610468	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
-41	788	7406537992316558	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
-788	1341	7406537997715645	2024robocon_robot2.elf	35e9913c082e7734
-53	451	7406662974860286	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_it.c.obj	eb303fe96d0ec0bb
-57	457	7406662974939870	CMakeFiles/2024robocon_robot2.dir/Core/Src/stm32f3xx_hal_msp.c.obj	b8ad97ec40a5ddfa
-14	464	7406662975015025	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
 465	919	7406662979420676	2024robocon_robot2.elf	35e9913c082e7734
+19	1015	7409148826613309	build.ninja	b13fb9138834be15
+45	1428	7409150077375227	2024robocon_robot2.elf	9c5c32b3dd50b63e
+8	947	7409150664824038	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
+948	1393	7409150668779496	2024robocon_robot2.elf	9c5c32b3dd50b63e

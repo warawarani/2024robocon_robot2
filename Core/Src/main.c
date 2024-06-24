@@ -185,7 +185,7 @@ int main(void)
       controlerFlag = 0;
       for (int i = 0; i < RX_LENGTH; i++)
       {
-        HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
+        //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
       }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
@@ -588,7 +588,7 @@ void WheelPowControl(double beside, double Horizontal)
 #ifdef ROBOT2_1
 /**
  * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-1
+ * @note for the robot2-1 (collecting the box)
  * @retval None
  * @param paramA
  * @param paramB
@@ -605,7 +605,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
 #ifdef ROBOT2_2
 /**
  * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-2
+ * @note for the robot2-2 (collecting the ball)
  * @retval None
  * @param paramA
  * @param paramB
@@ -622,7 +622,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
 #ifdef ROBOT2_3
 /**
  * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-3
+ * @note for the robot2-3 (landing only)
  * @retval None
  * @param paramA
  * @param paramB
@@ -639,7 +639,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
 #ifdef ROBOT2_4
 /**
  * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-4
+ * @note for the robot2-4 (not use this function)
  * @retval None
  * @param paramA
  * @param paramB
