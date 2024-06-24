@@ -75,6 +75,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void WheelPowControl(double vertical, double beside);
+void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint16_t paramD);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -84,7 +85,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim == &htim6)
   {
     timerCount++;
-    if (timerCount >= 1000)
+    if (timerCount >= 100)
     {
       stateCount++;
       timerFlag = 1;
@@ -172,6 +173,7 @@ int main(void)
 
     if (timerFlag)
     {
+      IndividualOpelation(1, 0, 0, 0);
       timerFlag = 0;
     }
     if (stateCount >= 16)
@@ -185,7 +187,7 @@ int main(void)
       controlerFlag = 0;
       for (int i = 0; i < RX_LENGTH; i++)
       {
-        //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
+        // HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
       }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
@@ -593,10 +595,63 @@ void WheelPowControl(double beside, double Horizontal)
  * @param paramA
  * @param paramB
  */
-void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint16_t paramD)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
+  static uint32_t countA = 0, countB = 0;
+  static uint8_t stateA = 0, stateB = 0;
+  ;
+  if (paramA == 1)
+  {
+    stateA = 1;
+  }
+  if (paramB == 1)
+  {
+    stateB = 1;
+  }
+  if (stateA)
+  {
+    switch (countA)
+    {
+    case 10:
+      powerA = 200;
+      break;
+    case 20:
+      powerA = 800;
+      break;
+    case 30:
+      powerA = 500;
+      stateA = 0;
+      break;
+    }
+    countA++;
+    if (countA >= 40)
+    {
+      countA = 0;
+    }
+  }
+  if (stateB)
+  {
+    switch (countB)
+    {
+    case 10:
+      powerB = 200;
+      break;
+    case 20:
+      powerB = 800;
+      break;
+    case 30:
+      powerB = 500;
+      stateB = 0;
+      break;
+    }
+    countB++;
+    if (countB >= 40)
+    {
+      countB = 0;
+    }
+  }
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
