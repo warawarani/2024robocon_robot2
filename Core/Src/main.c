@@ -71,7 +71,7 @@ typedef struct
   uint8_t toggleSW;
   uint16_t Vartical;
   uint16_t Horizontal;
-}inputState;
+} inputState;
 inputState cntState;
 /* USER CODE END PV */
 
@@ -85,7 +85,8 @@ static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-void WheelPowControl(double vertical, double beside);
+void WheelPowControl(double Horizontal, double Vartical);
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -124,9 +125,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
@@ -194,10 +195,10 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
-      
+      DecodeControlerVarBuffer(controlerVarBuffer);
       for (int i = 0; i < RX_LENGTH; i++)
       {
-        //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
+        // HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
       }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
@@ -217,9 +218,9 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -227,8 +228,8 @@ void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -239,9 +240,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -251,7 +251,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_TIM1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1 | RCC_PERIPHCLK_TIM1;
   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
   PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
@@ -261,10 +261,10 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief TIM1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM1_Init(void)
 {
 
@@ -308,14 +308,13 @@ static void MX_TIM1_Init(void)
   /* USER CODE BEGIN TIM1_Init 2 */
 
   /* USER CODE END TIM1_Init 2 */
-
 }
 
 /**
-  * @brief TIM3 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM3 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM3_Init(void)
 {
 
@@ -369,14 +368,13 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
-
 }
 
 /**
-  * @brief TIM6 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM6 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM6_Init(void)
 {
 
@@ -407,14 +405,13 @@ static void MX_TIM6_Init(void)
   /* USER CODE BEGIN TIM6_Init 2 */
 
   /* USER CODE END TIM6_Init 2 */
-
 }
 
 /**
-  * @brief TIM17 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM17 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM17_Init(void)
 {
 
@@ -470,14 +467,13 @@ static void MX_TIM17_Init(void)
 
   /* USER CODE END TIM17_Init 2 */
   HAL_TIM_MspPostInit(&htim17);
-
 }
 
 /**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief USART1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_USART1_UART_Init(void)
 {
 
@@ -505,14 +501,13 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
-
 }
 
 /**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief USART2 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_USART2_UART_Init(void)
 {
 
@@ -540,19 +535,18 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
-
 }
 
 /**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
@@ -575,8 +569,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -604,33 +598,49 @@ void WheelPowControl(double Horizontal, double Vartical)
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
 
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer){
-  cntState.Horizontal=controlerVarBuffer[1];
-  cntState.Vartical=controlerVarBuffer[2];
-  if(controlerVarBuffer[3] & 0x01 == 0x01){
-    cntState.buttonSW_1=1;
-  }else{
-    cntState.buttonSW_1=0;
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
+{
+  cntState.Horizontal = controlerVarBuffer[1];
+  cntState.Vartical = controlerVarBuffer[2];
+  if (controlerVarBuffer[3] & 0x01 == 0x01)
+  {
+    cntState.buttonSW_1 = 1;
   }
-  if(controlerVarBuffer[3] & 0x02 == 0x02){
-    cntState.buttonSW_2=1;
-  }else{
-    cntState.buttonSW_2=0;
+  else
+  {
+    cntState.buttonSW_1 = 0;
   }
-  if(controlerVarBuffer[3] & 0x04 == 0x04){
-    cntState.buttonSW_3=1;
-  }else{
-    cntState.buttonSW_3=0;
+  if (controlerVarBuffer[3] & 0x02 == 0x02)
+  {
+    cntState.buttonSW_2 = 1;
   }
-  if(controlerVarBuffer[3] & 0x08 == 0x08){
-    cntState.buttonSW_4=1;
-  }else{
-    cntState.buttonSW_4=0;
+  else
+  {
+    cntState.buttonSW_2 = 0;
   }
-  if(controlerVarBuffer[3] & 0x10 == 0x10){
-    cntState.toggleSW=1;
-  }else{
-    cntState.toggleSW=0;
+  if (controlerVarBuffer[3] & 0x04 == 0x04)
+  {
+    cntState.buttonSW_3 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_3 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x08 == 0x08)
+  {
+    cntState.buttonSW_4 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_4 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x10 == 0x10)
+  {
+    cntState.toggleSW = 1;
+  }
+  else
+  {
+    cntState.toggleSW = 0;
   }
 }
 
@@ -704,9 +714,9 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -718,14 +728,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
