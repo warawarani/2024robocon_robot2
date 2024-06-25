@@ -37,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RX_LENGTH 8
+#define RX_LENGTH 4
 #define ROBOT2_1
 // #define ROBOT2_2
 // #define ROBOT2_3
@@ -62,6 +62,17 @@ uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
 uint8_t controlerFlag;
 uint8_t con_cnt;
+typedef struct
+{
+  uint8_t buttonSW_1;
+  uint8_t buttonSW_2;
+  uint8_t buttonSW_3;
+  uint8_t buttonSW_4;
+  uint8_t toggleSW;
+  uint16_t Vartical;
+  uint16_t Horizontal;
+}inputState;
+inputState cntState;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -183,6 +194,7 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
+      
       for (int i = 0; i < RX_LENGTH; i++)
       {
         //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -575,21 +587,51 @@ static void MX_GPIO_Init(void)
  * @param vertical Vertical axis value of stick
  * @retval None
  */
-void WheelPowControl(double beside, double Horizontal)
+void WheelPowControl(double Horizontal, double Vartical)
 {
   const int STICK_CENTER_POSITION = 0x40;
   double leftWheelPow;
   double rightWheelPow;
   double radian;
   Horizontal -= (double)STICK_CENTER_POSITION;
-  beside -= (double)STICK_CENTER_POSITION;
-  radian = atan2(Horizontal, beside);
-  double powerGain = (hypot(beside, Horizontal) / (2 * STICK_CENTER_POSITION));
+  Vartical -= (double)STICK_CENTER_POSITION;
+  radian = atan2(Horizontal, Vartical);
+  double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
   powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, rightWheelPow);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
+}
+
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer){
+  cntState.Horizontal=controlerVarBuffer[1];
+  cntState.Vartical=controlerVarBuffer[2];
+  if(controlerVarBuffer[3] & 0x01 == 0x01){
+    cntState.buttonSW_1=1;
+  }else{
+    cntState.buttonSW_1=0;
+  }
+  if(controlerVarBuffer[3] & 0x02 == 0x02){
+    cntState.buttonSW_2=1;
+  }else{
+    cntState.buttonSW_2=0;
+  }
+  if(controlerVarBuffer[3] & 0x04 == 0x04){
+    cntState.buttonSW_3=1;
+  }else{
+    cntState.buttonSW_3=0;
+  }
+  if(controlerVarBuffer[3] & 0x08 == 0x08){
+    cntState.buttonSW_4=1;
+  }else{
+    cntState.buttonSW_4=0;
+  }
+  if(controlerVarBuffer[3] & 0x10 == 0x10){
+    cntState.toggleSW=1;
+  }else{
+    cntState.toggleSW=0;
+  }
 }
 
 #ifdef ROBOT2_1
