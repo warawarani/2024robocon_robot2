@@ -87,7 +87,7 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void WheelPowControl(double Horizontal, double Vartical);
 void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
-void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint16_t paramD);
+void IndividualOpelation(inputState *Data);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -185,7 +185,7 @@ int main(void)
 
     if (timerFlag)
     {
-      IndividualOpelation(1, 0, 0, 0);
+      IndividualOpelation(&cntState);
       timerFlag = 0;
     }
     if (stateCount >= 16)
@@ -579,9 +579,10 @@ static void MX_GPIO_Init(void)
 
 /**
  * @brief Control functions for differential two-wheel
+ * @retval None
+ * 
  * @param Horizontal Horizontal axis value of stick
  * @param vertical Vertical axis value of stick
- * @retval None
  */
 void WheelPowControl(double Horizontal, double Vartical)
 {
@@ -650,67 +651,46 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-1 (collecting the box)
- * @retval None
- * @param paramA
- * @param paramB
+ * @retval None 
+ * 
+ * @param Data 
  */
-void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint16_t paramD)
+void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
-  static uint32_t countA = 0, countB = 0;
-  static uint8_t stateA = 0, stateB = 0;
-  ;
-  if (paramA == 1)
+  if (Data->buttonSW_1 != Data->buttonSW_2)
   {
-    stateA = 1;
-  }
-  if (paramB == 1)
-  {
-    stateB = 1;
-  }
-  if (stateA)
-  {
-    switch (countA)
+    if (Data->buttonSW_1)
     {
-    case 10:
-      powerA = 200;
-      break;
-    case 20:
-      powerA = 800;
-      break;
-    case 30:
-      powerA = 500;
-      stateA = 0;
-      break;
+      powerA = 0;
     }
-    countA++;
-    if (countA >= 40)
+    if (Data->buttonSW_2)
     {
-      countA = 0;
+      powerA = 1000;
     }
   }
-  if (stateB)
+  else
   {
-    switch (countB)
+    powerA = 500;
+  }
+
+  if (Data->buttonSW_3 != Data->buttonSW_4)
+  {
+    if (Data->buttonSW_3)
     {
-    case 10:
-      powerB = 200;
-      break;
-    case 20:
-      powerB = 800;
-      break;
-    case 30:
-      powerB = 500;
-      stateB = 0;
-      break;
+      powerB = 0;
     }
-    countB++;
-    if (countB >= 40)
+    if (Data->buttonSW_4)
     {
-      countB = 0;
+      powerB = 1000;
     }
   }
+  else
+  {
+    powerB = 500;
+  }
+
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
@@ -724,7 +704,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint
  * @param paramA
  * @param paramB
  */
-void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
@@ -741,7 +721,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
  * @param paramA
  * @param paramB
  */
-void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
@@ -758,7 +738,7 @@ void IndividualOpelation(uint16_t paramA, uint16_t paramB)
  * @param paramA
  * @param paramB
  */
-void IndividualOpelation(uint16_t paramA, uint16_t paramB)
+void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
