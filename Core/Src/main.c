@@ -37,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RX_LENGTH 8
+#define RX_LENGTH 4
 #define ROBOT2_1
 // #define ROBOT2_2
 // #define ROBOT2_3
@@ -62,6 +62,17 @@ uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
 uint8_t controlerFlag;
 uint8_t con_cnt;
+typedef struct
+{
+  uint8_t buttonSW_1;
+  uint8_t buttonSW_2;
+  uint8_t buttonSW_3;
+  uint8_t buttonSW_4;
+  uint8_t toggleSW;
+  uint16_t Vartical;
+  uint16_t Horizontal;
+} inputState;
+inputState cntState;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,7 +85,8 @@ static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-void WheelPowControl(double vertical, double beside);
+void WheelPowControl(double Horizontal, double Vartical);
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
 void IndividualOpelation(uint16_t paramA, uint16_t paramB, uint16_t paramC, uint16_t paramD);
 /* USER CODE END PFP */
 
@@ -180,11 +192,12 @@ int main(void)
     {
       stateCount = 0;
     }
-    WheelPowControl(x, y);
+    WheelPowControl(cntState.Horizontal, cntState.Vartical);
 
     if (controlerFlag)
     {
       controlerFlag = 0;
+      DecodeControlerVarBuffer(controlerVarBuffer);
       for (int i = 0; i < RX_LENGTH; i++)
       {
         // HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -543,20 +556,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED1_Pin LED2_Pin */
-  GPIO_InitStruct.Pin = LED1_Pin;
+  /*Configure GPIO pin : LimitSW_Pin */
+  GPIO_InitStruct.Pin = LimitSW_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(LimitSW_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LED_Pin */
+  GPIO_InitStruct.Pin = LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : LimitSw_Pin */
-  GPIO_InitStruct.Pin = LimitSw_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(LimitSw_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
   /* USER CODE END MX_GPIO_Init_2 */
@@ -570,21 +583,67 @@ static void MX_GPIO_Init(void)
  * @param vertical Vertical axis value of stick
  * @retval None
  */
-void WheelPowControl(double beside, double Horizontal)
+void WheelPowControl(double Horizontal, double Vartical)
 {
   const int STICK_CENTER_POSITION = 0x40;
   double leftWheelPow;
   double rightWheelPow;
   double radian;
   Horizontal -= (double)STICK_CENTER_POSITION;
-  beside -= (double)STICK_CENTER_POSITION;
-  radian = atan2(Horizontal, beside);
-  double powerGain = (hypot(beside, Horizontal) / (2 * STICK_CENTER_POSITION));
+  Vartical -= (double)STICK_CENTER_POSITION;
+  radian = atan2(Horizontal, Vartical);
+  double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
   powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, rightWheelPow);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
+}
+
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
+{
+  cntState.Horizontal = controlerVarBuffer[1];
+  cntState.Vartical = controlerVarBuffer[2];
+  if (controlerVarBuffer[3] & 0x01 == 0x01)
+  {
+    cntState.buttonSW_1 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_1 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x02 == 0x02)
+  {
+    cntState.buttonSW_2 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_2 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x04 == 0x04)
+  {
+    cntState.buttonSW_3 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_3 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x08 == 0x08)
+  {
+    cntState.buttonSW_4 = 1;
+  }
+  else
+  {
+    cntState.buttonSW_4 = 0;
+  }
+  if (controlerVarBuffer[3] & 0x10 == 0x10)
+  {
+    cntState.toggleSW = 1;
+  }
+  else
+  {
+    cntState.toggleSW = 0;
+  }
 }
 
 #ifdef ROBOT2_1
