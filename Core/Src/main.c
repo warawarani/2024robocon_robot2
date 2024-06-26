@@ -190,7 +190,7 @@ int main(void)
     {
       stateCount = 0;
     }
-    WheelPowControl(x, y);
+    WheelPowControl(cntState.Horizontal, cntState.Vartical);
 
     if (controlerFlag)
     {
