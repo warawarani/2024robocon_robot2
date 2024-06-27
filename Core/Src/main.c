@@ -757,6 +757,38 @@ void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
+  if (Data->buttonSW_1 != Data->buttonSW_2)
+  {
+    if (Data->buttonSW_1)
+    {
+      powerA = 0;
+    }
+    if (Data->buttonSW_2)
+    {
+      powerA = 1000;
+    }
+  }
+  else
+  {
+    powerA = 500;
+  }
+
+  if (Data->buttonSW_3 != Data->buttonSW_4)
+  {
+    if (Data->buttonSW_3)
+    {
+      powerB = 0;
+    }
+    if (Data->buttonSW_4)
+    {
+      powerB = 1000;
+    }
+  }
+  else
+  {
+    powerB = 500;
+  }
+
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
