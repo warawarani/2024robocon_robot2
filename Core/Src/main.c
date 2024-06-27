@@ -54,13 +54,11 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint8_t wheelConFlag;
 uint32_t timerCount;
-uint16_t stateCount;
 uint8_t timerFlag = 0;
 uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
-uint8_t controlerFlag;
+uint8_t controlerFlag = 0;
 uint8_t con_cnt;
 typedef struct
 {
@@ -97,9 +95,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim == &htim6)
   {
     timerCount++;
-    if (timerCount >= 100)
+    if (timerCount >= 10)
     {
-      stateCount++;
       timerFlag = 1;
       timerCount = 0;
     }
@@ -169,7 +166,6 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Base_Start_IT(&htim6);
 
-  static int x, y;
   static int encoderVal;
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
@@ -185,14 +181,10 @@ int main(void)
 
     if (timerFlag)
     {
+      WheelPowControl(cntState.Horizontal, cntState.Vartical);
       IndividualOpelation(&cntState);
       timerFlag = 0;
     }
-    if (stateCount >= 16)
-    {
-      stateCount = 0;
-    }
-    WheelPowControl(cntState.Horizontal, cntState.Vartical);
 
     if (controlerFlag)
     {
@@ -580,7 +572,7 @@ static void MX_GPIO_Init(void)
 /**
  * @brief Control functions for differential two-wheel
  * @retval None
- * 
+ *
  * @param Horizontal Horizontal axis value of stick
  * @param vertical Vertical axis value of stick
  */
@@ -651,9 +643,9 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-1 (collecting the box)
- * @retval None 
- * 
- * @param Data 
+ * @retval None
+ *
+ * @param Data
  */
 void IndividualOpelation(inputState *Data)
 {
