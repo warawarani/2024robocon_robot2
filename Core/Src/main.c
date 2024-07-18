@@ -60,6 +60,11 @@ uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
 uint8_t controlerFlag = 0;
 uint8_t con_cnt;
+
+/**
+ * @brief manage controller state
+ * 
+ */
 typedef struct
 {
   uint8_t buttonSW_1;
@@ -83,6 +88,7 @@ static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
+
 void WheelPowControl(double Horizontal, double Vartical);
 void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState);
 void IndividualOpelation(inputState *Data);
@@ -92,6 +98,7 @@ void IndividualOpelation(inputState *Data);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+  /*timer*/
   if (htim == &htim6)
   {
     timerCount++;
@@ -188,12 +195,13 @@ int main(void)
 
     if (controlerFlag)
     {
-      controlerFlag = 0;
+      
       DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
-      for (int i = 0; i < RX_LENGTH; i++)
+      /*for (int i = 0; i < RX_LENGTH; i++)
       {
-        // HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
-      }
+        HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
+      }*/
+      controlerFlag = 0;
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
         __HAL_UART_GET_FLAG(&huart1, UART_FLAG_NE) ||
@@ -570,7 +578,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /**
- * @brief Control functions for differential two-wheel
+ * @brief Control function for differential two-wheel.
  * @retval None
  *
  * @param Horizontal Horizontal axis value of stick
@@ -592,7 +600,14 @@ void WheelPowControl(double Horizontal, double Vartical)
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, rightWheelPow);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, leftWheelPow);
 }
-
+/**
+ * @brief this function decodes the received controller value and stores it in a structure.
+ * 
+ * @param controlerVarBuffer the received controller value
+ * @param cntState the structure is stored value
+ * 
+ * @note 
+ */
 void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState)
 {
   cntState->Horizontal = controlerVarBuffer[3];
@@ -645,7 +660,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState)
  * @note for the robot2-1 (collecting the box)
  * @retval None
  *
- * @param Data
+ * @param Data struct of controller state
  */
 void IndividualOpelation(inputState *Data)
 {
