@@ -37,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RX_LENGTH 4
+#define RX_LENGTH 8
 #define ROBOT2_1
 // #define ROBOT2_2
 // #define ROBOT2_3
@@ -84,7 +84,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void WheelPowControl(double Horizontal, double Vartical);
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState);
 void IndividualOpelation(inputState *Data);
 /* USER CODE END PFP */
 
@@ -177,7 +177,7 @@ int main(void)
   while (1)
   {
     encoderVal = TIM1->CNT;
-    HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
+    // HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
 
     if (timerFlag)
     {
@@ -189,7 +189,7 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
-      DecodeControlerVarBuffer(controlerVarBuffer);
+      DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
       for (int i = 0; i < RX_LENGTH; i++)
       {
         // HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -589,54 +589,54 @@ void WheelPowControl(double Horizontal, double Vartical)
   powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, rightWheelPow);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, rightWheelPow);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, leftWheelPow);
 }
 
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState)
 {
-  cntState.Horizontal = controlerVarBuffer[1];
-  cntState.Vartical = controlerVarBuffer[2];
-  if (controlerVarBuffer[3] & 0x01 == 0x01)
+  cntState->Horizontal = controlerVarBuffer[3];
+  cntState->Vartical = controlerVarBuffer[4];
+  if (controlerVarBuffer[2] & (1<<4))
   {
-    cntState.buttonSW_1 = 1;
+    cntState->buttonSW_1 = 1;
   }
   else
   {
-    cntState.buttonSW_1 = 0;
+    cntState->buttonSW_1 = 0;
   }
-  if (controlerVarBuffer[3] & 0x02 == 0x02)
+  if (controlerVarBuffer[2] & (1<<5))
   {
-    cntState.buttonSW_2 = 1;
+    cntState->buttonSW_2 = 1;
   }
   else
   {
-    cntState.buttonSW_2 = 0;
+    cntState->buttonSW_2 = 0;
   }
-  if (controlerVarBuffer[3] & 0x04 == 0x04)
+  if (controlerVarBuffer[2] & (1<<6))
   {
-    cntState.buttonSW_3 = 1;
+    cntState->buttonSW_3 = 1;
   }
   else
   {
-    cntState.buttonSW_3 = 0;
+    cntState->buttonSW_3 = 0;
   }
-  if (controlerVarBuffer[3] & 0x08 == 0x08)
+  if (controlerVarBuffer[1] & (1<<0))
   {
-    cntState.buttonSW_4 = 1;
+    cntState->buttonSW_4 = 1;
   }
   else
   {
-    cntState.buttonSW_4 = 0;
+    cntState->buttonSW_4 = 0;
   }
-  if (controlerVarBuffer[3] & 0x10 == 0x10)
-  {
-    cntState.toggleSW = 1;
-  }
-  else
-  {
-    cntState.toggleSW = 0;
-  }
+  //! if (controlerVarBuffer[3] & 0x10 == 0x10)
+  //!{
+  //!   cntState.toggleSW = 1;
+  //! }
+  //! else
+  //!{
+  //!   cntState.toggleSW = 0;
+  //! }
 }
 
 #ifdef ROBOT2_1
@@ -683,8 +683,8 @@ void IndividualOpelation(inputState *Data)
     powerB = 500;
   }
 
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, powerB);
 }
 #endif /*ROBOT2_1*/
 
