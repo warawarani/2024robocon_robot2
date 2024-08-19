@@ -605,7 +605,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
 {
   cntState.Horizontal = controlerVarBuffer[1];
   cntState.Vartical = controlerVarBuffer[2];
-  if (controlerVarBuffer[3] & 0x01 == 0x01)
+  if (controlerVarBuffer[3] & (1<<0))
   {
     cntState.buttonSW_1 = 1;
   }
@@ -613,7 +613,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
   {
     cntState.buttonSW_1 = 0;
   }
-  if (controlerVarBuffer[3] & 0x02 == 0x02)
+  if (controlerVarBuffer[3] & (1<<1))
   {
     cntState.buttonSW_2 = 1;
   }
@@ -621,7 +621,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
   {
     cntState.buttonSW_2 = 0;
   }
-  if (controlerVarBuffer[3] & 0x04 == 0x04)
+  if (controlerVarBuffer[3] & (1<<2))
   {
     cntState.buttonSW_3 = 1;
   }
@@ -629,7 +629,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
   {
     cntState.buttonSW_3 = 0;
   }
-  if (controlerVarBuffer[3] & 0x08 == 0x08)
+  if (controlerVarBuffer[3] & (1<<3))
   {
     cntState.buttonSW_4 = 1;
   }
@@ -637,7 +637,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
   {
     cntState.buttonSW_4 = 0;
   }
-  if (controlerVarBuffer[3] & 0x10 == 0x10)
+  if (controlerVarBuffer[3] & (1<<4))
   {
     cntState.toggleSW = 1;
   }
