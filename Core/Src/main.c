@@ -97,7 +97,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim == &htim6)
   {
     timerCount++;
-    if (timerCount >= 100)
+    if (timerCount >= 10)
     {
       stateCount++;
       timerFlag = 1;
@@ -580,7 +580,7 @@ static void MX_GPIO_Init(void)
 /**
  * @brief Control functions for differential two-wheel
  * @retval None
- * 
+ *
  * @param Horizontal Horizontal axis value of stick
  * @param vertical Vertical axis value of stick
  */
@@ -651,26 +651,43 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-1 (collecting the box)
- * @retval None 
- * 
- * @param Data 
+ * @retval None
+ *
+ * @param Data
  */
 void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
+  static int count = 0;
+  static int enableMove = 1;
+  int limSwState = HAL_GPIO_ReadPin(LimitSW_GPIO_Port, LimitSW_Pin);
+  if (limSwState && count < 100)
+  {
+    count++;
+    if (count >= 99)
+    {
+      enableMove = 0;
+    }
+  }
+  else if (!limSwState && count > 0)
+  {
+    count = 0;
+    enableMove = 1;
+  }
   if (Data->buttonSW_1 != Data->buttonSW_2)
   {
-    if (Data->buttonSW_1)
+    if (Data->buttonSW_1 && enableMove)
     {
       powerA = 0;
     }
-    if (Data->buttonSW_2)
+    if (Data->buttonSW_2 && count > 0)
     {
       powerA = 1000;
+      enableMove = 1;
     }
   }
-  else
+  else if (!enableMove)
   {
     powerA = 500;
   }
