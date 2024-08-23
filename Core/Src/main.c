@@ -37,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RX_LENGTH 8
+#define RX_LENGTH 4
 #define ROBOT2_1
 // #define ROBOT2_2
 // #define ROBOT2_3
@@ -54,17 +54,14 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+uint8_t wheelConFlag;
 uint32_t timerCount;
+uint16_t stateCount;
 uint8_t timerFlag = 0;
 uint8_t U1RXbuffer;
 uint8_t controlerVarBuffer[RX_LENGTH];
-uint8_t controlerFlag = 0;
+uint8_t controlerFlag;
 uint8_t con_cnt;
-
-/**
- * @brief manage controller state
- * 
- */
 typedef struct
 {
   uint8_t buttonSW_1;
@@ -88,9 +85,8 @@ static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
 void WheelPowControl(double Horizontal, double Vartical);
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState);
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
 void IndividualOpelation(inputState *Data);
 /* USER CODE END PFP */
 
@@ -98,12 +94,12 @@ void IndividualOpelation(inputState *Data);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  /*timer*/
   if (htim == &htim6)
   {
     timerCount++;
     if (timerCount >= 10)
     {
+      stateCount++;
       timerFlag = 1;
       timerCount = 0;
     }
@@ -112,7 +108,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  /*受信した値を格納*/
+  /*受信した値を�???��?��??��?��?*/
   if (huart == &huart1)
   {
     controlerVarBuffer[con_cnt] = U1RXbuffer;
@@ -124,6 +120,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
       con_cnt = 0;
       controlerFlag = 1;
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
     }
   }
 }
@@ -173,8 +170,6 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Base_Start_IT(&htim6);
 
-  static int encoderVal;
-
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
 
   /* USER CODE END 2 */
@@ -183,25 +178,27 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    encoderVal = TIM1->CNT;
     // HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
 
     if (timerFlag)
     {
-      WheelPowControl(cntState.Horizontal, cntState.Vartical);
       IndividualOpelation(&cntState);
       timerFlag = 0;
     }
+    if (stateCount >= 16)
+    {
+      stateCount = 0;
+    }
+    WheelPowControl(cntState.Horizontal, cntState.Vartical);
 
     if (controlerFlag)
     {
-      
-      DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
-      /*for (int i = 0; i < RX_LENGTH; i++)
+      controlerFlag = 0;
+      DecodeControlerVarBuffer(controlerVarBuffer);
+      for (int i = 0; i < RX_LENGTH; i++)
       {
         HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
-      }*/
-      controlerFlag = 0;
+      }
     }
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_ORE) ||
         __HAL_UART_GET_FLAG(&huart1, UART_FLAG_NE) ||
@@ -487,7 +484,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
+  huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -558,11 +555,11 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : LimitSW_Pin */
-  GPIO_InitStruct.Pin = LimitSW_Pin;
+  /*Configure GPIO pins : LimitSW1_Pin LimitSW2_Pin */
+  GPIO_InitStruct.Pin = LimitSW1_Pin | LimitSW2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(LimitSW_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_Pin */
   GPIO_InitStruct.Pin = LED_Pin;
@@ -578,7 +575,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /**
- * @brief Control function for differential two-wheel.
+ * @brief Control functions for differential two-wheel
  * @retval None
  *
  * @param Horizontal Horizontal axis value of stick
@@ -597,61 +594,54 @@ void WheelPowControl(double Horizontal, double Vartical)
   powerGain = (powerGain >= 1) ? 1 : powerGain;
   rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
   leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, rightWheelPow);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, leftWheelPow);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, rightWheelPow);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
-/**
- * @brief this function decodes the received controller value and stores it in a structure.
- * 
- * @param controlerVarBuffer the received controller value
- * @param cntState the structure is stored value
- * 
- * @note 
- */
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState)
+
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
 {
-  cntState->Horizontal = controlerVarBuffer[3];
-  cntState->Vartical = controlerVarBuffer[4];
-  if (controlerVarBuffer[2] & (1<<4))
+  cntState.Horizontal = controlerVarBuffer[1];
+  cntState.Vartical = controlerVarBuffer[2];
+  if (controlerVarBuffer[3] & (1 << 0))
   {
-    cntState->buttonSW_1 = 1;
+    cntState.buttonSW_1 = 1;
   }
   else
   {
-    cntState->buttonSW_1 = 0;
+    cntState.buttonSW_1 = 0;
   }
-  if (controlerVarBuffer[2] & (1<<5))
+  if (controlerVarBuffer[3] & (1 << 1))
   {
-    cntState->buttonSW_2 = 1;
+    cntState.buttonSW_2 = 1;
   }
   else
   {
-    cntState->buttonSW_2 = 0;
+    cntState.buttonSW_2 = 0;
   }
-  if (controlerVarBuffer[2] & (1<<6))
+  if (controlerVarBuffer[3] & (1 << 2))
   {
-    cntState->buttonSW_3 = 1;
+    cntState.buttonSW_3 = 1;
   }
   else
   {
-    cntState->buttonSW_3 = 0;
+    cntState.buttonSW_3 = 0;
   }
-  if (controlerVarBuffer[1] & (1<<0))
+  if (controlerVarBuffer[3] & (1 << 3))
   {
-    cntState->buttonSW_4 = 1;
+    cntState.buttonSW_4 = 1;
   }
   else
   {
-    cntState->buttonSW_4 = 0;
+    cntState.buttonSW_4 = 0;
   }
-  //! if (controlerVarBuffer[3] & 0x10 == 0x10)
-  //!{
-  //!   cntState.toggleSW = 1;
-  //! }
-  //! else
-  //!{
-  //!   cntState.toggleSW = 0;
-  //! }
+  if (controlerVarBuffer[3] & (1 << 4))
+  {
+    cntState.toggleSW = 1;
+  }
+  else
+  {
+    cntState.toggleSW = 0;
+  }
 }
 
 #ifdef ROBOT2_1
@@ -660,7 +650,79 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *cntState)
  * @note for the robot2-1 (collecting the box)
  * @retval None
  *
- * @param Data struct of controller state
+ * @param Data
+ */
+void IndividualOpelation(inputState *Data)
+{
+  static uint16_t powerA = 500; // for locking mechanism
+  static uint16_t powerB = 500; // for collection arm
+  static uint16_t powerC = 500; // for vacuume pump
+  int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+  int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
+  int encoderVal = TIM1->CNT; //(0~2000)
+
+  /* for locking mechanism */
+  if (Data->toggleSW && !limSwState1)
+  {
+    powerA = 0;
+  }
+  else if (!Data->toggleSW && !limSwState2)
+  {
+    powerA = 1000;
+  }
+  else
+  {
+    powerA = 500;
+  }
+
+  /* for collection arm */
+  if (Data->buttonSW_1 != Data->buttonSW_2)
+  {
+    if (Data->buttonSW_1 && encoderVal <= 1000)
+    {
+      powerB = 0;
+    }
+    else if (Data->buttonSW_2 && encoderVal >= 10)
+    {
+      powerB = 1000;
+    }
+    else
+    {
+      powerB = 500;
+    }
+  }
+  else
+  {
+    powerB = 500;
+  }
+
+  /* for vacuume pump */
+  if (Data->buttonSW_3 != Data->buttonSW_4)
+  {
+    if (Data->buttonSW_3)
+    {
+      powerC = 0;
+    }
+    else if (Data->buttonSW_3)
+    {
+      powerC = 500;
+    }
+  }
+
+  /* set duty ratio */
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
+  __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, powerC);
+}
+#endif /*ROBOT2_1*/
+
+#ifdef ROBOT2_2
+/**
+ * @brief This fanction is proglam for the robot2-X
+ * @note for the robot2-2 (collecting the ball)
+ * @retval None
+ * @param paramA
+ * @param paramB
  */
 void IndividualOpelation(inputState *Data)
 {
@@ -698,23 +760,6 @@ void IndividualOpelation(inputState *Data)
     powerB = 500;
   }
 
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, powerB);
-}
-#endif /*ROBOT2_1*/
-
-#ifdef ROBOT2_2
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-2 (collecting the ball)
- * @retval None
- * @param paramA
- * @param paramB
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
@@ -732,6 +777,38 @@ void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
   static uint16_t powerB = 500;
+  if (Data->buttonSW_1 != Data->buttonSW_2)
+  {
+    if (Data->buttonSW_1)
+    {
+      powerA = 0;
+    }
+    if (Data->buttonSW_2)
+    {
+      powerA = 1000;
+    }
+  }
+  else
+  {
+    powerA = 500;
+  }
+
+  if (Data->buttonSW_3 != Data->buttonSW_4)
+  {
+    if (Data->buttonSW_3)
+    {
+      powerB = 0;
+    }
+    if (Data->buttonSW_4)
+    {
+      powerB = 1000;
+    }
+  }
+  else
+  {
+    powerB = 500;
+  }
+
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
