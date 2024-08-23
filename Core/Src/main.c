@@ -170,9 +170,6 @@ int main(void)
   HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Base_Start_IT(&htim6);
 
-  static int x, y;
-  static int encoderVal;
-
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
 
   /* USER CODE END 2 */
@@ -181,7 +178,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    encoderVal = TIM1->CNT;
     // HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
 
     if (timerFlag)
@@ -658,11 +654,14 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
  */
 void IndividualOpelation(inputState *Data)
 {
-  static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
+  static uint16_t powerA = 500; // for locking mechanism
+  static uint16_t powerB = 500; // for collection arm
+  static uint16_t powerC = 500; // for vacuume pump
   int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
   int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
+  int encoderVal = TIM1->CNT; //(0~2000)
 
+  /* for locking mechanism */
   if (Data->toggleSW && !limSwState1)
   {
     powerA = 0;
@@ -676,15 +675,20 @@ void IndividualOpelation(inputState *Data)
     powerA = 500;
   }
 
-  if (Data->buttonSW_3 != Data->buttonSW_4)
+  /* for collection arm */
+  if (Data->buttonSW_1 != Data->buttonSW_2)
   {
-    if (Data->buttonSW_3)
+    if (Data->buttonSW_1 && encoderVal <= 1000)
     {
       powerB = 0;
     }
-    if (Data->buttonSW_4)
+    else if (Data->buttonSW_2 && encoderVal >= 10)
     {
       powerB = 1000;
+    }
+    else
+    {
+      powerB = 500;
     }
   }
   else
@@ -692,8 +696,23 @@ void IndividualOpelation(inputState *Data)
     powerB = 500;
   }
 
+  /* for vacuume pump */
+  if (Data->buttonSW_3 != Data->buttonSW_4)
+  {
+    if (Data->buttonSW_3)
+    {
+      powerC = 0;
+    }
+    else if (Data->buttonSW_3)
+    {
+      powerC = 500;
+    }
+  }
+
+  /* set duty ratio */
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
+  __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, powerC);
 }
 #endif /*ROBOT2_1*/
 
