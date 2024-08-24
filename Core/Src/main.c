@@ -38,7 +38,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define RX_LENGTH 4
-#define ROBOT2_1
+#define ROBOT2_2
 // #define ROBOT2_2
 // #define ROBOT2_3
 // #define ROBOT2_4
@@ -720,99 +720,43 @@ void IndividualOpelation(inputState *Data)
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-2 (collecting the ball)
- * @retval None
- * @param paramA
- * @param paramB
+ * @retval none
+ *
+ * @param Data
  */
 void IndividualOpelation(inputState *Data)
 {
-  static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
+  static uint16_t powerA = 500; // for belt
+  static uint16_t powerB = 500; // for roller
+
   if (Data->buttonSW_1 != Data->buttonSW_2)
   {
     if (Data->buttonSW_1)
     {
       powerA = 0;
+      powerB = 350;
     }
-    if (Data->buttonSW_2)
+    else if (Data->buttonSW_2)
     {
-      powerA = 1000;
+      powerA = 400;
+      powerB = 350;
+    }
+    else if (Data->buttonSW_3)
+    {
+      powerA = 600;
+      powerB = 750;
     }
   }
   else
   {
     powerA = 500;
-  }
-
-  if (Data->buttonSW_3 != Data->buttonSW_4)
-  {
-    if (Data->buttonSW_3)
-    {
-      powerB = 0;
-    }
-    if (Data->buttonSW_4)
-    {
-      powerB = 1000;
-    }
-  }
-  else
-  {
     powerB = 500;
   }
 
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
-#endif /*ROBOT2_1*/
-
-#ifdef ROBOT2_2
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-2 (collecting the ball)
- * @retval None
- * @param paramA
- * @param paramB
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
-  if (Data->buttonSW_1 != Data->buttonSW_2)
-  {
-    if (Data->buttonSW_1)
-    {
-      powerA = 0;
-    }
-    if (Data->buttonSW_2)
-    {
-      powerA = 1000;
-    }
-  }
-  else
-  {
-    powerA = 500;
-  }
-
-  if (Data->buttonSW_3 != Data->buttonSW_4)
-  {
-    if (Data->buttonSW_3)
-    {
-      powerB = 0;
-    }
-    if (Data->buttonSW_4)
-    {
-      powerB = 1000;
-    }
-  }
-  else
-  {
-    powerB = 500;
-  }
-
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
-}
-#endif /*ROBOT2_1*/
+#endif /*ROBOT2_2*/
 
 #ifdef ROBOT2_3
 /**
