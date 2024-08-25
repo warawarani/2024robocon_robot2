@@ -186,7 +186,7 @@ int main(void)
       IndividualOpelation(&cntState);
       timerFlag = 0;
     }
-    if (stateCount >= 16)
+    if (stateCount >= 200)
     {
       stateCount = 0;
     }
@@ -195,7 +195,7 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
-      DecodeControlerVarBuffer(controlerVarBuffer);
+      //DecodeControlerVarBuffer(controlerVarBuffer);
       for (int i = 0; i < RX_LENGTH; i++)
       {
         //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -688,13 +688,13 @@ void IndividualOpelation(inputState *Data)
   /* for collection arm */
   if (Data->buttonSW_1 != Data->buttonSW_2)
   {
-    if (Data->buttonSW_1 && encoderVal <= 1000)
+    if (Data->buttonSW_1 && encoderVal <= 1000 || encoderVal >= 1900)
     {
-      powerB = 0;
+      powerB = 900;
     }
-    else if (Data->buttonSW_2 && encoderVal >= 10)
+    else if (Data->buttonSW_2 && encoderVal >= 50)
     {
-      powerB = 1000;
+      powerB = 100;
     }
     else
     {
@@ -713,7 +713,7 @@ void IndividualOpelation(inputState *Data)
     {
       powerC = 0;
     }
-    else if (Data->buttonSW_3)
+    else if (Data->buttonSW_4)
     {
       powerC = 500;
     }
