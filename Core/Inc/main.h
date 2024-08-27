@@ -61,8 +61,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOF
-#define LimitSW_Pin GPIO_PIN_0
-#define LimitSW_GPIO_Port GPIOA
+#define LimitSW1_Pin GPIO_PIN_0
+#define LimitSW1_GPIO_Port GPIOA
 #define LED_Pin GPIO_PIN_1
 #define LED_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
@@ -81,6 +81,8 @@ void Error_Handler(void);
 #define ENCODER_A_GPIO_Port GPIOA
 #define ENCODER_B_Pin GPIO_PIN_9
 #define ENCODER_B_GPIO_Port GPIOA
+#define LimitSW2_Pin GPIO_PIN_12
+#define LimitSW2_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
