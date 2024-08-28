@@ -751,18 +751,18 @@ void IndividualOpelation(inputState *Data)
   {
     if (Data->buttonSW_1)
     {
-      powerA = 0;
+      powerA = 400;
       powerB = 350;
     }
     else if (Data->buttonSW_2)
     {
-      powerA = 400;
-      powerB = 350;
+      powerA = 600;
+      powerB = 650;
     }
     else if (Data->buttonSW_3)
     {
-      powerA = 600;
-      powerB = 650;
+      powerA = 0;
+      powerB = 350;
     }
   }
   else
