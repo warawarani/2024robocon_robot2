@@ -38,7 +38,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define RX_LENGTH 4
-#define ROBOT2_2
+#define ROBOT2_3
 // #define ROBOT2_2
 // #define ROBOT2_3
 // #define ROBOT2_4
@@ -781,13 +781,11 @@ void IndividualOpelation(inputState *Data)
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-3 (landing only)
  * @retval None
- * @param paramA
- * @param paramB
+ * @param Data
  */
 void IndividualOpelation(inputState *Data)
 {
   static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
   if (Data->buttonSW_1 != Data->buttonSW_2)
   {
     if (Data->buttonSW_1)
@@ -804,24 +802,7 @@ void IndividualOpelation(inputState *Data)
     powerA = 500;
   }
 
-  if (Data->buttonSW_3 != Data->buttonSW_4)
-  {
-    if (Data->buttonSW_3)
-    {
-      powerB = 0;
-    }
-    if (Data->buttonSW_4)
-    {
-      powerB = 1000;
-    }
-  }
-  else
-  {
-    powerB = 500;
-  }
-
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
 }
 #endif /*ROBOT2_3*/
 
