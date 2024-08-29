@@ -693,11 +693,11 @@ void IndividualOpelation(inputState *Data)
   {
     if (Data->buttonSW_1 && encoderVal <= 1000 || encoderVal >= 1900)
     {
-      powerB = 900;
+      powerB = 800;
     }
     else if (Data->buttonSW_2 && encoderVal >= 50)
     {
-      powerB = 100;
+      powerB = 200;
     }
     else
     {
@@ -720,7 +720,7 @@ void IndividualOpelation(inputState *Data)
   }
   if (swState2)
   {
-    powerC = 0;
+    powerC = 1000;
   }
   else
   {
