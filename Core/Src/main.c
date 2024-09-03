@@ -42,7 +42,12 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
+TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim6;
+TIM_HandleTypeDef htim17;
+UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 uint32_t timerCount;
 uint16_t stateCount;
@@ -60,9 +65,7 @@ static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-void WheelPowControl(double Horizontal, double Vartical);
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data);
-void IndividualOpelation(inputState *Data);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/

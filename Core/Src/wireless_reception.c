@@ -2,6 +2,10 @@
 
 static uint8_t con_cnt = 0;
 
+uint8_t U1RXbuffer;
+uint8_t controlerVarBuffer[RX_LENGTH];
+uint8_t controlerFlag;
+
 /**
  * @brief receive valve
  *
@@ -26,11 +30,11 @@ void uart_reception()
  * @param controlerVarBuffer
  * @param Data
  */
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
+void DecodeControlerVarBuffer(uint8_t *controlerBuffer, inputState *Data)
 {
-    Data->Horizontal = controlerVarBuffer[1];
-    Data->Vartical = controlerVarBuffer[2];
-    if (controlerVarBuffer[3] & (1 << 0))
+    Data->Horizontal = controlerBuffer[1];
+    Data->Vartical = controlerBuffer[2];
+    if (controlerBuffer[3] & (1 << 0))
     {
         Data->buttonSW_1 = 1;
     }
@@ -38,7 +42,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
     {
         Data->buttonSW_1 = 0;
     }
-    if (controlerVarBuffer[3] & (1 << 1))
+    if (controlerBuffer[3] & (1 << 1))
     {
         Data->buttonSW_2 = 1;
     }
@@ -46,7 +50,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
     {
         Data->buttonSW_2 = 0;
     }
-    if (controlerVarBuffer[3] & (1 << 2))
+    if (controlerBuffer[3] & (1 << 2))
     {
         Data->buttonSW_3 = 1;
     }
@@ -54,7 +58,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
     {
         Data->buttonSW_3 = 0;
     }
-    if (controlerVarBuffer[3] & (1 << 3))
+    if (controlerBuffer[3] & (1 << 3))
     {
         Data->buttonSW_4 = 1;
     }
@@ -62,7 +66,7 @@ void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
     {
         Data->buttonSW_4 = 0;
     }
-    if (controlerVarBuffer[3] & (1 << 4))
+    if (controlerBuffer[3] & (1 << 4))
     {
         Data->toggleSW = 1;
     }

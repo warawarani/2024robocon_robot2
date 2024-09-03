@@ -66,7 +66,7 @@ void IndividualOpelation(inputState *Data)
     /* for collection arm */
     if (Data->buttonSW_1 != Data->buttonSW_2)
     {
-        if (Data->buttonSW_1 && encoderVal <= 1000 || encoderVal >= 1900)
+        if ((Data->buttonSW_1 && encoderVal <= 1000) || encoderVal >= 1900)
         {
             powerB = 800;
         }
