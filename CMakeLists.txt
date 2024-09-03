@@ -49,6 +49,8 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
     # Add user sources here
+    Core/Src/wireless_reception.c
+    Core/Src/robot_pow_operatin.c
 )
 
 # Add include paths
