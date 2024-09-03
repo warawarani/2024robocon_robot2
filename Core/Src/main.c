@@ -72,7 +72,6 @@ typedef struct
   uint16_t Vartical;
   uint16_t Horizontal;
 } inputState;
-inputState cntState;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -86,7 +85,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void WheelPowControl(double Horizontal, double Vartical);
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data);
 void IndividualOpelation(inputState *Data);
 /* USER CODE END PFP */
 
@@ -108,7 +107,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  /*受信した値を�????��?��??��?��???��?��??��?��?*/
+  /*受信した値を格納*/
   if (huart == &huart1)
   {
     controlerVarBuffer[con_cnt] = U1RXbuffer;
@@ -134,7 +133,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  inputState cntState;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -195,7 +194,7 @@ int main(void)
     if (controlerFlag)
     {
       controlerFlag = 0;
-      DecodeControlerVarBuffer(controlerVarBuffer);
+      DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
       for (int i = 0; i < RX_LENGTH; i++)
       {
         HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -600,49 +599,49 @@ void WheelPowControl(double Horizontal, double Vartical)
   __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
 
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
+void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
 {
   cntState.Horizontal = controlerVarBuffer[1];
   cntState.Vartical = controlerVarBuffer[2];
   if (controlerVarBuffer[3] & (1 << 0))
   {
-    cntState.buttonSW_1 = 1;
+    Data->buttonSW_1 = 1;
   }
   else
   {
-    cntState.buttonSW_1 = 0;
+    Data->buttonSW_1 = 0;
   }
   if (controlerVarBuffer[3] & (1 << 1))
   {
-    cntState.buttonSW_2 = 1;
+    Data->buttonSW_2 = 1;
   }
   else
   {
-    cntState.buttonSW_2 = 0;
+    Data->buttonSW_2 = 0;
   }
   if (controlerVarBuffer[3] & (1 << 2))
   {
-    cntState.buttonSW_3 = 1;
+    Data->buttonSW_3 = 1;
   }
   else
   {
-    cntState.buttonSW_3 = 0;
+    Data->buttonSW_3 = 0;
   }
   if (controlerVarBuffer[3] & (1 << 3))
   {
-    cntState.buttonSW_4 = 1;
+    Data->buttonSW_4 = 1;
   }
   else
   {
-    cntState.buttonSW_4 = 0;
+    Data->buttonSW_4 = 0;
   }
   if (controlerVarBuffer[3] & (1 << 4))
   {
-    cntState.toggleSW = 1;
+    Data->toggleSW = 1;
   }
   else
   {
-    cntState.toggleSW = 0;
+    Data->toggleSW = 0;
   }
 }
 
