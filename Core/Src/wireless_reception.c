@@ -4,7 +4,7 @@ static uint8_t con_cnt = 0;
 
 /**
  * @brief receive valve
- * 
+ *
  */
 void uart_reception()
 {
@@ -22,9 +22,9 @@ void uart_reception()
 }
 /**
  * @brief decode the received value
- * 
- * @param controlerVarBuffer 
- * @param Data 
+ *
+ * @param controlerVarBuffer
+ * @param Data
  */
 void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer, inputState *Data)
 {

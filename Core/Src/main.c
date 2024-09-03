@@ -43,9 +43,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-
 /* USER CODE BEGIN PV */
-uint8_t wheelConFlag;
 uint32_t timerCount;
 uint16_t stateCount;
 uint8_t timerFlag = 0;
