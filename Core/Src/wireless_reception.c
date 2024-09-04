@@ -7,11 +7,12 @@ uint8_t controlerVarBuffer[RX_LENGTH];
 uint8_t controlerFlag;
 
 /**
- * @brief receive valve
+ * @brief receive value flom uart
  *
  */
 void uart_reception()
 {
+    HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
     controlerVarBuffer[con_cnt] = U1RXbuffer;
     if (controlerVarBuffer[0] == 0x80)
     {

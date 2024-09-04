@@ -15,7 +15,7 @@ void WheelPowControl(double Horizontal, double Vartical)
     Horizontal -= (double)STICK_CENTER_POSITION;
     Vartical -= (double)STICK_CENTER_POSITION;
     radian = atan2(Horizontal, Vartical);
-    double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
+    double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION - 1));
     powerGain = (powerGain >= 1) ? 1 : powerGain;
     rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
     leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));

@@ -85,8 +85,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  /*受信した値を格納*/
   if (huart == &huart1)
   {
     uart_reception();

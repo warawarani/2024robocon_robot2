@@ -72,3 +72,7 @@
 43	491	7470513429371214	CMakeFiles/2024robocon_robot2.dir/Core/Src/robot_pow_operatin.c.obj	bb95ed983305dcb5
 54	502	7470513429451871	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
 502	945	7470513433383351	2024robocon_robot2.elf	dafb22ff70cde030
+264	896	7471201656486225	CMakeFiles/2024robocon_robot2.dir/Core/Src/main.c.obj	56942788b21ae070
+254	898	7471201656499739	CMakeFiles/2024robocon_robot2.dir/Core/Src/robot_pow_operatin.c.obj	bb95ed983305dcb5
+152	910	7471201656602793	CMakeFiles/2024robocon_robot2.dir/Core/Src/wireless_reception.c.obj	3d7ca7a80b6a15eb
+910	2021	7471201667414258	2024robocon_robot2.elf	dafb22ff70cde030
