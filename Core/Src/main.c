@@ -46,8 +46,10 @@ TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim17;
+
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
+
 /* USER CODE BEGIN PV */
 uint32_t timerCount;
 uint16_t stateCount;
@@ -75,7 +77,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim == &htim6)
   {
     timerCount++;
-    if (timerCount >= 10)
+    if (timerCount >= 5)
     {
       stateCount++;
       timerFlag = 1;
@@ -106,7 +108,6 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -149,19 +150,24 @@ int main(void)
 
     if (timerFlag)
     {
-      IndividualOpelation(&cntState);
       timerFlag = 0;
+      IndividualOpelation(&cntState);
     }
-    if (stateCount >= 200)
+    
+    if (stateCount >= 50)
     {
-      stateCount = 0;
+      cntState.Horizontal = 0x40;
+      cntState.Vartical = 0x40;
     }
+    
     WheelPowControl(cntState.Horizontal, cntState.Vartical);
-
+    
     if (controlerFlag)
     {
       controlerFlag = 0;
+      stateCount = 0;
       DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
+
       for (int i = 0; i < RX_LENGTH; i++)
       {
         HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
