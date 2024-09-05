@@ -19,8 +19,8 @@ void WheelPowControl(double Horizontal, double Vartical)
     powerGain = (powerGain >= 1) ? 1 : powerGain;
     rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
     leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, rightWheelPow);
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, leftWheelPow);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, rightWheelPow);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
 
 #ifdef ROBOT2_1_A
