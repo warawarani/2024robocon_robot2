@@ -69,7 +69,7 @@ void Error_Handler(void);
 #define VCP_TX_GPIO_Port GPIOA
 #define MOTER2_Pin GPIO_PIN_4
 #define MOTER2_GPIO_Port GPIOA
-#define MOTER1_Pin GPIO_PIN_6
+#define MOTER1_Pin GPIO_PIN_5
 #define MOTER1_GPIO_Port GPIOA
 #define MOTER5_Pin GPIO_PIN_7
 #define MOTER5_GPIO_Port GPIOA
