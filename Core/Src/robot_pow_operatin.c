@@ -23,7 +23,7 @@ void WheelPowControl(double Horizontal, double Vartical)
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
 
-#ifdef ROBOT2_1_A
+#ifdef ROBOT2_1
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-1 (collecting the box)
@@ -33,10 +33,36 @@ void WheelPowControl(double Horizontal, double Vartical)
  */
 void IndividualOpelation(inputState *Data)
 {
-    static uint16_t powerB = 500; // for collection arm
-    static uint16_t powerC = 500; // for vacuume pump
+    static uint16_t powerA = 500;    // for locking mechanism
+    static uint16_t powerB = 500;    // for collection arm
+    static uint16_t powerC = 500;    // for vacuume pump
     uint32_t encoderVal = TIM1->CNT; //(0~2000)
+    int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+    int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
+    static uint8_t swState1, lastSwState1;
     static uint8_t swState2, lastSwState2;
+
+    /* for locking mechanism */
+    if (Data->buttonSW_4 != lastSwState1)
+    {
+        if (Data->buttonSW_4)
+        {
+            swState1 = !swState1;
+        }
+        lastSwState1 = Data->buttonSW_4;
+    }
+    if (swState1 && !limSwState1)
+    {
+        powerA = 0;
+    }
+    else if (!swState1 && !limSwState2)
+    {
+        powerA = 1000;
+    }
+    else
+    {
+        powerA = 500;
+    }
 
     /* for collection arm */
     if (Data->buttonSW_1 != Data->buttonSW_2)
@@ -78,51 +104,9 @@ void IndividualOpelation(inputState *Data)
     }
 
     /* set duty ratio */
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
     __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, powerC);
-}
-#endif /*ROBOT2_1*/
-
-#ifdef ROBOT2_1_U
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-1 (collecting the box)
- * @retval None
- *
- * @param Data
- */
-void IndividualOpelation(inputState *Data)
-{
-    static uint16_t powerA = 500; // for locking mechanism
-    int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-    int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
-    static uint8_t swState1,lastSwState1;
-
-    /* for locking mechanism */
-    if (Data->buttonSW_4 != lastSwState1)
-    {
-        if (Data->buttonSW_4)
-        {
-            swState1 = !swState1;
-        }
-        lastSwState1 = Data->buttonSW_4;
-    }
-    if (swState1 && !limSwState1)
-    {
-        powerA = 0;
-    }
-    else if (!swState1 && !limSwState2)
-    {
-        powerA = 1000;
-    }
-    else
-    {
-        powerA = 500;
-    }
-
-
-    /* set duty ratio */
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerA);
 }
 #endif /*ROBOT2_1*/
 

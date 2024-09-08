@@ -19,8 +19,8 @@ typedef struct
     uint16_t Horizontal;
 } inputState;
 
-//  #define ROBOT2_1_A
-#define ROBOT2_1_U
+
+#define ROBOT2_1
 //  #define ROBOT2_2
 //  #define ROBOT2_3
 //  #define ROBOT2_4
