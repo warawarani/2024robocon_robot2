@@ -21,8 +21,8 @@ typedef struct
 
 
 #define ROBOT2_1
-//  #define ROBOT2_2
-//  #define ROBOT2_3
-//  #define ROBOT2_4
+//#define ROBOT2_2
+//#define ROBOT2_3
+//#define ROBOT2_4
 
 #endif

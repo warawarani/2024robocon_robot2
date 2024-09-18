@@ -37,10 +37,11 @@ void IndividualOpelation(inputState *Data)
     static uint16_t powerB = 500;    // for collection arm
     static uint16_t powerC = 500;    // for vacuume pump
     uint32_t encoderVal = TIM1->CNT; //(0~2000)
-    int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-    int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
-    static uint8_t swState1, lastSwState1;
-    static uint8_t swState2, lastSwState2;
+    //int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+    static uint8_t swState1 = 0, lastSwState1 = 0;
+    static uint8_t swState2 = 0, lastSwState2 = 0;
+
+    HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
 
     /* for locking mechanism */
     if (Data->buttonSW_4 != lastSwState1)
@@ -51,13 +52,13 @@ void IndividualOpelation(inputState *Data)
         }
         lastSwState1 = Data->buttonSW_4;
     }
-    if (swState1 && !limSwState1)
+    if (swState1 )
+    {
+        powerA = 500;
+    }
+    else if (!swState1 )
     {
         powerA = 0;
-    }
-    else if (!swState1 && !limSwState2)
-    {
-        powerA = 1000;
     }
     else
     {
@@ -67,13 +68,13 @@ void IndividualOpelation(inputState *Data)
     /* for collection arm */
     if (Data->buttonSW_1 != Data->buttonSW_2)
     {
-        if ((Data->buttonSW_1 && encoderVal <= 1000) || encoderVal >= 1900)
+        if (Data->buttonSW_1 && (encoderVal <= 200 || encoderVal >= 1100))
         {
-            powerB = 800;
+            powerB = 1000;
         }
-        else if (Data->buttonSW_2 && encoderVal >= 50)
+        else if (Data->buttonSW_2 && encoderVal <= 1900)
         {
-            powerB = 200;
+            powerB = 0;
         }
         else
         {
@@ -120,30 +121,56 @@ void IndividualOpelation(inputState *Data)
  */
 void IndividualOpelation(inputState *Data)
 {
-    static uint16_t powerA = 500; // for belt
-    static uint16_t powerB = 500; // for roller
+    static uint16_t powerA = 500; // for roller
+    static uint16_t powerB = 500; // for arm
+    int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+    static uint8_t swState1=0, lastSwState1 = 0;
 
-    if (Data->buttonSW_1 != Data->buttonSW_2)
+    /* for roller */
+    if (Data->buttonSW_3 != lastSwState1)
     {
-        if (Data->buttonSW_1)
+        if (Data->buttonSW_3)
         {
-            powerA = 400;
-            powerB = 350;
+            swState1 = !swState1;
         }
-        else if (Data->buttonSW_2)
+        lastSwState1 = Data->buttonSW_3;
+    }
+    if (!swState1)
+    {
+        if (powerA >= 590)
         {
             powerA = 600;
-            powerB = 650;
         }
-        else if (Data->buttonSW_3)
+        else
         {
-            powerA = 0;
-            powerB = 350;
+            powerA++;
         }
     }
     else
     {
-        powerA = 500;
+        if (powerA <= 510)
+        {
+            powerA = 500;
+        }
+        else
+        {
+            powerA--;
+        }
+    }
+
+    if (Data->buttonSW_1 != Data->buttonSW_2)
+    {
+        if (Data->buttonSW_1 && !limSwState1)
+        {
+            powerB = 300;
+        }
+        else if (Data->buttonSW_2)
+        {
+            powerB = 700;
+        }
+    }
+    else
+    {
         powerB = 500;
     }
 
