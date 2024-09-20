@@ -67,6 +67,8 @@ void Error_Handler(void);
 #define LED_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
+#define MOTER2_DIR_Pin GPIO_PIN_3
+#define MOTER2_DIR_GPIO_Port GPIOA
 #define MOTER2_Pin GPIO_PIN_4
 #define MOTER2_GPIO_Port GPIOA
 #define MOTER1_Pin GPIO_PIN_5
@@ -77,18 +79,16 @@ void Error_Handler(void);
 #define MOTER3_GPIO_Port GPIOB
 #define MOTER4_Pin GPIO_PIN_1
 #define MOTER4_GPIO_Port GPIOB
-#define ENCODER_A_Pin GPIO_PIN_8
-#define ENCODER_A_GPIO_Port GPIOA
-#define ENCODER_B_Pin GPIO_PIN_9
-#define ENCODER_B_GPIO_Port GPIOA
-#define LimitSW2_Pin GPIO_PIN_12
-#define LimitSW2_GPIO_Port GPIOA
+#define MOTER3_DIR_Pin GPIO_PIN_8
+#define MOTER3_DIR_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
 #define SWCLK_GPIO_Port GPIOA
 #define VCP_RX_Pin GPIO_PIN_15
 #define VCP_RX_GPIO_Port GPIOA
+#define MOTER1_DIR_Pin GPIO_PIN_3
+#define MOTER1_DIR_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

@@ -1,4 +1,34 @@
 #include "robot_pow_operation.h"
+void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow)
+{
+    uint16_t pwm, dir;
+    pwm = (pow <= 500) ? (1000 - pow * 2) : pow * 2 - 1000;
+    dir = (pow <= 500) ? 0 : 1;
+    if (htimx == &htim2)
+    {
+        if (pin == TIM_CHANNEL_1)
+        {
+            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, pwm);
+            HAL_GPIO_WritePin(MOTER1_DIR_GPIO_Port, MOTER1_DIR_Pin, dir);
+        }
+    }
+    if (htimx == &htim3)
+    {
+        if (pin == TIM_CHANNEL_2)
+        {
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, pwm);
+            HAL_GPIO_WritePin(MOTER2_DIR_GPIO_Port, MOTER2_DIR_Pin, dir);
+        }
+
+        if (pin == TIM_CHANNEL_3)
+        {
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, pwm);
+            HAL_GPIO_WritePin(MOTER3_DIR_GPIO_Port, MOTER3_DIR_Pin, dir);
+        }
+    }
+}
+
+#ifndef ROBOT2_1
 /**
  * @brief Control functions for differential two-wheel
  * @retval None
@@ -15,15 +45,43 @@ void WheelPowControl(double Horizontal, double Vartical)
     Horizontal -= (double)STICK_CENTER_POSITION;
     Vartical -= (double)STICK_CENTER_POSITION;
     radian = atan2(Horizontal, Vartical);
-    double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION - 1));
+    double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
     powerGain = (powerGain >= 1) ? 1 : powerGain;
     rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
     leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, rightWheelPow);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
+#endif
 
 #ifdef ROBOT2_1
+
+/**
+ * @brief Control functions for differential two-wheel
+ * @retval None
+ *
+ * @param Horizontal Horizontal axis value of stick
+ * @param vertical Vertical axis value of stick
+ * @note adjusted robot2_1
+ */
+void WheelPowControl(double Horizontal, double Vartical)
+{
+    const int STICK_CENTER_POSITION = 0x40;
+    double leftWheelPow = 500;
+    double rightWheelPow = 500;
+    double radian;
+    Horizontal -= (double)STICK_CENTER_POSITION;
+    Vartical -= (double)STICK_CENTER_POSITION;
+    radian = atan2(Horizontal, Vartical);
+    double powerGain = (hypot(Vartical, Horizontal) / STICK_CENTER_POSITION);
+    powerGain = (powerGain >= 1) ? 1 : powerGain;
+    rightWheelPow = 500 + ((powerGain * 500) * 2 * sin(radian - M_3PI_4));
+    leftWheelPow = 500 + ((powerGain * 500) * 2 * sin(radian + M_3PI_4));
+    rightWheelPow=(rightWheelPow<0)?0:(rightWheelPow>1000)?1000:rightWheelPow;
+    leftWheelPow=(leftWheelPow<0)?0:(leftWheelPow>1000)?1000:leftWheelPow;
+    powerConverter(&htim2, TIM_CHANNEL_1, rightWheelPow);
+    powerConverter(&htim3, TIM_CHANNEL_2, leftWheelPow);
+}
 /**
  * @brief This fanction is proglam for the robot2-X
  * @note for the robot2-1 (collecting the box)
@@ -33,15 +91,12 @@ void WheelPowControl(double Horizontal, double Vartical)
  */
 void IndividualOpelation(inputState *Data)
 {
-    static uint16_t powerA = 500;    // for locking mechanism
-    static uint16_t powerB = 500;    // for collection arm
-    static uint16_t powerC = 500;    // for vacuume pump
-    uint32_t encoderVal = TIM1->CNT; //(0~2000)
-    //int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+    static uint16_t powerA = 500; // for locking mechanism
+    static uint16_t powerB = 500; // for collection arm
+    static uint16_t powerC = 500; // for vacuume pump
+    // int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
     static uint8_t swState1 = 0, lastSwState1 = 0;
     static uint8_t swState2 = 0, lastSwState2 = 0;
-
-    HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
 
     /* for locking mechanism */
     if (Data->buttonSW_4 != lastSwState1)
@@ -52,11 +107,11 @@ void IndividualOpelation(inputState *Data)
         }
         lastSwState1 = Data->buttonSW_4;
     }
-    if (swState1 )
+    if (!swState1)
     {
         powerA = 500;
     }
-    else if (!swState1 )
+    else if (swState1)
     {
         powerA = 0;
     }
@@ -68,13 +123,13 @@ void IndividualOpelation(inputState *Data)
     /* for collection arm */
     if (Data->buttonSW_1 != Data->buttonSW_2)
     {
-        if (Data->buttonSW_1 && (encoderVal <= 200 || encoderVal >= 1100))
+        if (Data->buttonSW_1)
         {
-            powerB = 1000;
+            powerB = 800;
         }
-        else if (Data->buttonSW_2 && encoderVal <= 1900)
+        else if (Data->buttonSW_2)
         {
-            powerB = 0;
+            powerB = 200;
         }
         else
         {
@@ -105,7 +160,7 @@ void IndividualOpelation(inputState *Data)
     }
 
     /* set duty ratio */
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
+    powerConverter(&htim3, TIM_CHANNEL_3, powerA);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
     __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, powerC);
 }
@@ -124,7 +179,7 @@ void IndividualOpelation(inputState *Data)
     static uint16_t powerA = 500; // for roller
     static uint16_t powerB = 500; // for arm
     int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-    static uint8_t swState1=0, lastSwState1 = 0;
+    static uint8_t swState1 = 0, lastSwState1 = 0;
 
     /* for roller */
     if (Data->buttonSW_3 != lastSwState1)
@@ -135,11 +190,11 @@ void IndividualOpelation(inputState *Data)
         }
         lastSwState1 = Data->buttonSW_3;
     }
-    if (!swState1)
+    if (swState1)
     {
-        if (powerA >= 590)
+        if (powerA >= 980)
         {
-            powerA = 600;
+            powerA = 1000;
         }
         else
         {

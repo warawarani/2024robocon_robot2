@@ -1,7 +1,6 @@
 #ifndef OPE_ROBOT
 #define OPE_ROBOT
 #include "main.h"
-extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
