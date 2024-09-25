@@ -108,7 +108,6 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -173,7 +172,7 @@ int main(void)
 
       for (int i = 0; i < RX_LENGTH; i++)
       {
-        //HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
+        HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
       }
       HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
     }
@@ -530,30 +529,24 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, MOTER5_DIR_Pin|LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(MOTER1_DIR_GPIO_Port, MOTER1_DIR_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, MOTER1_DIR_Pin|MOTER4_DIR_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : LimitSW1_Pin */
-  GPIO_InitStruct.Pin = LimitSW1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(LimitSW1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LED_Pin MOTER2_DIR_Pin MOTER3_DIR_Pin */
-  GPIO_InitStruct.Pin = LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin;
+  /*Configure GPIO pins : MOTER5_DIR_Pin LED_Pin MOTER2_DIR_Pin MOTER3_DIR_Pin */
+  GPIO_InitStruct.Pin = MOTER5_DIR_Pin|LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : MOTER1_DIR_Pin */
-  GPIO_InitStruct.Pin = MOTER1_DIR_Pin;
+  /*Configure GPIO pins : MOTER1_DIR_Pin MOTER4_DIR_Pin */
+  GPIO_InitStruct.Pin = MOTER1_DIR_Pin|MOTER4_DIR_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(MOTER1_DIR_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

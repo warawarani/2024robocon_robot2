@@ -61,8 +61,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOF
-#define LimitSW1_Pin GPIO_PIN_0
-#define LimitSW1_GPIO_Port GPIOA
+#define MOTER5_DIR_Pin GPIO_PIN_0
+#define MOTER5_DIR_GPIO_Port GPIOA
 #define LED_Pin GPIO_PIN_1
 #define LED_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
@@ -89,6 +89,8 @@ void Error_Handler(void);
 #define VCP_RX_GPIO_Port GPIOA
 #define MOTER1_DIR_Pin GPIO_PIN_3
 #define MOTER1_DIR_GPIO_Port GPIOB
+#define MOTER4_DIR_Pin GPIO_PIN_4
+#define MOTER4_DIR_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
