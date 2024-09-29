@@ -138,9 +138,6 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  HAL_GPIO_WritePin(MOTER1_DIR_GPIO_Port,MOTER1_DIR_Pin,GPIO_PIN_SET);
-  HAL_GPIO_WritePin(MOTER2_DIR_GPIO_Port,MOTER2_DIR_Pin,GPIO_PIN_SET);
-  HAL_GPIO_WritePin(MOTER3_DIR_GPIO_Port,MOTER3_DIR_Pin,GPIO_PIN_SET);
 
   /* USER CODE END 2 */
 

@@ -12,7 +12,7 @@ void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow)
             HAL_GPIO_WritePin(MOTER1_DIR_GPIO_Port, MOTER1_DIR_Pin, dir);
         }
     }
-    if (htimx == &htim3)
+    else if (htimx == &htim3)
     {
         if (pin == TIM_CHANNEL_2)
         {
@@ -31,9 +31,10 @@ void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow)
             HAL_GPIO_WritePin(MOTER4_DIR_GPIO_Port, MOTER4_DIR_Pin, dir);
         }
     }
-    if(htimx == &htim17){
+    else if (htimx == &htim17)
+    {
         __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, pwm);
-            HAL_GPIO_WritePin(MOTER5_DIR_GPIO_Port, MOTER5_DIR_Pin, dir);
+        HAL_GPIO_WritePin(MOTER5_DIR_GPIO_Port, MOTER5_DIR_Pin, dir);
     }
 }
 
@@ -55,12 +56,12 @@ void WheelPowControl(double Horizontal, double Vartical)
     radian = atan2(Horizontal, Vartical);
     double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
     powerGain = (powerGain >= 1) ? 1 : powerGain;
-    rightWheelPow = 500 - ((powerGain * 500) * 2 * sin(radian - M_3PI_4));
-    leftWheelPow = 500 - ((powerGain * 500) * 2 * sin(radian + M_3PI_4));
+    rightWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.33 * sin(radian+M_PI)));
+    leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.33 * sin(radian+M_PI)));
     rightWheelPow = (rightWheelPow < 0) ? 0 : (rightWheelPow > 1000) ? 1000
-                                                                    : rightWheelPow;
+                                                                     : rightWheelPow;
     leftWheelPow = (leftWheelPow < 0) ? 0 : (leftWheelPow > 1000) ? 1000
-                                                                    : leftWheelPow;
+                                                                  : leftWheelPow;
     powerConverter(&htim2, TIM_CHANNEL_1, rightWheelPow);
     powerConverter(&htim3, TIM_CHANNEL_2, leftWheelPow);
 }
@@ -83,19 +84,7 @@ void IndividualOpelation(inputState *Data)
     static uint8_t swState2 = 0, lastSwState2 = 0;
 
     /* for locking mechanism */
-    if (Data->buttonSW_4 != lastSwState1)
-    {
-        if (Data->buttonSW_4 == 1)
-        {
-            swState1 = !swState1;
-        }
-        lastSwState1 = Data->buttonSW_4;
-    }
-    if (!swState1)
-    {
-        powerA = 500;
-    }
-    else if (swState1)
+    if (Data->buttonSW_4)
     {
         powerA = 0;
     }
@@ -109,11 +98,11 @@ void IndividualOpelation(inputState *Data)
     {
         if (Data->buttonSW_1)
         {
-            powerB = 825;
+            powerB = 875;
         }
         else if (Data->buttonSW_2)
         {
-            powerB = 175;
+            powerB = 125;
         }
         else
         {
@@ -167,7 +156,7 @@ void IndividualOpelation(inputState *Data)
     /* for roller */
     if (Data->buttonSW_3 != lastSwState1)
     {
-        if (Data->buttonSW_3==1)
+        if (Data->buttonSW_3 == 1)
         {
             swState1 = !swState1;
         }
@@ -201,11 +190,11 @@ void IndividualOpelation(inputState *Data)
     {
         if (Data->buttonSW_1)
         {
-            powerB = 300;
+            powerB = 225;
         }
         else if (Data->buttonSW_2)
         {
-            powerB = 700;
+            powerB = 775;
         }
     }
     else
@@ -214,7 +203,11 @@ void IndividualOpelation(inputState *Data)
     }
 
     powerConverter(&htim3, TIM_CHANNEL_3, powerA);
-    powerConverter(&htim3, TIM_CHANNEL_4, powerB);
+
+    int pwm = (powerB <= 500) ? (1000 - powerB * 2) : powerB * 2 - 1000;
+    int dir = (powerB <= 500) ? 0 : 1;
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
+    HAL_GPIO_WritePin(MOTER4_DIR_GPIO_Port, MOTER4_DIR_Pin, dir);
 }
 #endif /*ROBOT2_2*/
 
