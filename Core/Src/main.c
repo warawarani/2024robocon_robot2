@@ -136,6 +136,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
   HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim6);
+  MoterPowInit();
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
 
@@ -157,6 +158,11 @@ int main(void)
     {
       cntState.Horizontal = 0x40;
       cntState.Vartical = 0x40;
+      cntState.buttonSW_1=0;
+      cntState.buttonSW_2=0;
+      cntState.buttonSW_3=0;
+      cntState.buttonSW_4=0;
+      MoterPowInit();
     }
     
     WheelPowControl(cntState.Horizontal, cntState.Vartical);

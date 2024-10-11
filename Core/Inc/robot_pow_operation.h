@@ -4,7 +4,8 @@
 #include "ope_robot.h"
 #include <math.h>
 
- void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow);
+void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow);
+void MoterPowInit();
 void WheelPowControl(double Horizontal, double Vartical);
 void IndividualOpelation(inputState *Data);
 

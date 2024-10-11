@@ -39,6 +39,23 @@ void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow)
 }
 
 /**
+ * @brief Init moter power to 0.
+ * 
+ */
+void MoterPowInit(){
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, 0);
+    __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, 0);
+    HAL_GPIO_WritePin(MOTER1_DIR_GPIO_Port, MOTER1_DIR_Pin, 0);
+    HAL_GPIO_WritePin(MOTER2_DIR_GPIO_Port, MOTER2_DIR_Pin, 0);
+    HAL_GPIO_WritePin(MOTER3_DIR_GPIO_Port, MOTER3_DIR_Pin, 0);
+    HAL_GPIO_WritePin(MOTER4_DIR_GPIO_Port, MOTER4_DIR_Pin, 0);
+    HAL_GPIO_WritePin(MOTER5_DIR_GPIO_Port, MOTER5_DIR_Pin, 0);
+}
+
+/**
  * @brief Control functions for differential two-wheel
  * @retval None
  *
@@ -56,8 +73,8 @@ void WheelPowControl(double Horizontal, double Vartical)
     radian = atan2(Horizontal, Vartical);
     double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
     powerGain = (powerGain >= 1) ? 1 : powerGain;
-    rightWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian+M_PI)));
-    leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian+M_PI)));
+    rightWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian + M_PI)));
+    leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
     rightWheelPow = (rightWheelPow < 0) ? 0 : (rightWheelPow > 1000) ? 1000
                                                                      : rightWheelPow;
     leftWheelPow = (leftWheelPow < 0) ? 0 : (leftWheelPow > 1000) ? 1000
@@ -80,7 +97,7 @@ void IndividualOpelation(inputState *Data)
     static uint16_t powerB = 500; // for collection arm
     static uint16_t powerC = 500; // for vacuume pump
     // int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-    //static uint8_t swState1 = 0, lastSwState1 = 0;
+    // static uint8_t swState1 = 0, lastSwState1 = 0;
     static uint8_t swState2 = 0, lastSwState2 = 0;
 
     /* for locking mechanism */
@@ -98,11 +115,11 @@ void IndividualOpelation(inputState *Data)
     {
         if (Data->buttonSW_1)
         {
-            powerB = 700;
+            powerB = 875;
         }
         else if (Data->buttonSW_2)
         {
-            powerB = 300;
+            powerB = 125;
         }
         else
         {
@@ -162,7 +179,6 @@ void IndividualOpelation(inputState *Data)
         }
         lastSwState1 = Data->buttonSW_3;
     }
-
     if (swState1)
     {
         if (powerA >= 990)
@@ -186,6 +202,7 @@ void IndividualOpelation(inputState *Data)
         }
     }
 
+    /* for arm */
     if (Data->buttonSW_1 != Data->buttonSW_2)
     {
         if (Data->buttonSW_1)
@@ -194,7 +211,11 @@ void IndividualOpelation(inputState *Data)
         }
         else if (Data->buttonSW_2)
         {
-            powerB = 775;
+            powerB = 725;
+        }
+        else
+        {
+            powerB = 500;
         }
     }
     else
@@ -221,11 +242,11 @@ void IndividualOpelation(inputState *Data)
     {
         if (Data->buttonSW_1)
         {
-            powerA = 0;
+            powerA = 1000;
         }
         if (Data->buttonSW_2)
         {
-            powerA = 1000;
+            powerA = 0;
         }
     }
     else
