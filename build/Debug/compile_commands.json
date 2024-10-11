@@ -1,6 +1,18 @@
 [
 {
   "directory": "C:/STM/2024robocon_robot2/build/Debug",
+  "command": "C:\\ST\\STM32CubeCLT_1.15.1\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32F303x8 -DUSE_HAL_DRIVER -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Core/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F3xx/Include -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\wireless_reception.c.obj -c C:\\STM\\2024robocon_robot2\\Core\\Src\\wireless_reception.c",
+  "file": "C:\\STM\\2024robocon_robot2\\Core\\Src\\wireless_reception.c",
+  "output": "CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\wireless_reception.c.obj"
+},
+{
+  "directory": "C:/STM/2024robocon_robot2/build/Debug",
+  "command": "C:\\ST\\STM32CubeCLT_1.15.1\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32F303x8 -DUSE_HAL_DRIVER -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Core/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F3xx/Include -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\robot_pow_operatin.c.obj -c C:\\STM\\2024robocon_robot2\\Core\\Src\\robot_pow_operatin.c",
+  "file": "C:\\STM\\2024robocon_robot2\\Core\\Src\\robot_pow_operatin.c",
+  "output": "CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\robot_pow_operatin.c.obj"
+},
+{
+  "directory": "C:/STM/2024robocon_robot2/build/Debug",
   "command": "C:\\ST\\STM32CubeCLT_1.15.1\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DDEBUG -DSTM32F303x8 -DUSE_HAL_DRIVER -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Core/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32F3xx/Include -IC:/STM/2024robocon_robot2/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -g -std=gnu11 -o CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\main.c.obj -c C:\\STM\\2024robocon_robot2\\Core\\Src\\main.c",
   "file": "C:\\STM\\2024robocon_robot2\\Core\\Src\\main.c",
   "output": "CMakeFiles\\2024robocon_robot2.dir\\Core\\Src\\main.c.obj"

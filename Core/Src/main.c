@@ -22,7 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <math.h>
+#include "wireless_reception.h"
+#include "robot_pow_operation.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -37,15 +38,11 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RX_LENGTH 4
-#define ROBOT2_3
-// #define ROBOT2_2
-// #define ROBOT2_3
-// #define ROBOT2_4
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TIM_HandleTypeDef htim1;
+TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim17;
@@ -54,40 +51,23 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint8_t wheelConFlag;
 uint32_t timerCount;
 uint16_t stateCount;
 uint8_t timerFlag = 0;
-uint8_t U1RXbuffer;
-uint8_t controlerVarBuffer[RX_LENGTH];
-uint8_t controlerFlag;
-uint8_t con_cnt;
-typedef struct
-{
-  uint8_t buttonSW_1;
-  uint8_t buttonSW_2;
-  uint8_t buttonSW_3;
-  uint8_t buttonSW_4;
-  uint8_t toggleSW;
-  uint16_t Vartical;
-  uint16_t Horizontal;
-} inputState;
-inputState cntState;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_TIM1_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM6_Init(void);
 static void MX_TIM17_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
-void WheelPowControl(double Horizontal, double Vartical);
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer);
-void IndividualOpelation(inputState *Data);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -97,7 +77,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim == &htim6)
   {
     timerCount++;
-    if (timerCount >= 10)
+    if (timerCount >= 5)
     {
       stateCount++;
       timerFlag = 1;
@@ -107,40 +87,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
-  /*受信した値を�????��?��??��?��???��?��??��?��?*/
   if (huart == &huart1)
   {
-    controlerVarBuffer[con_cnt] = U1RXbuffer;
-    if (controlerVarBuffer[0] == 0x80)
-    {
-      con_cnt++;
-    }
-    if (con_cnt == RX_LENGTH)
-    {
-      con_cnt = 0;
-      controlerFlag = 1;
-      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-    }
+    uart_reception();
   }
 }
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  inputState cntState;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -156,20 +123,20 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
   MX_TIM17_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
   HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
-  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
   HAL_TIM_Base_Start_IT(&htim6);
+  MoterPowInit();
 
   HAL_UART_Receive_IT(&huart1, (uint8_t *)&U1RXbuffer, sizeof(U1RXbuffer));
 
@@ -183,19 +150,29 @@ int main(void)
 
     if (timerFlag)
     {
-      IndividualOpelation(&cntState);
       timerFlag = 0;
+      IndividualOpelation(&cntState);
     }
-    if (stateCount >= 200)
+    
+    if (stateCount >= 50)
     {
-      stateCount = 0;
+      cntState.Horizontal = 0x40;
+      cntState.Vartical = 0x40;
+      cntState.buttonSW_1=0;
+      cntState.buttonSW_2=0;
+      cntState.buttonSW_3=0;
+      cntState.buttonSW_4=0;
+      MoterPowInit();
     }
+    
     WheelPowControl(cntState.Horizontal, cntState.Vartical);
-
+    
     if (controlerFlag)
     {
       controlerFlag = 0;
-      DecodeControlerVarBuffer(controlerVarBuffer);
+      stateCount = 0;
+      DecodeControlerVarBuffer(controlerVarBuffer, &cntState);
+
       for (int i = 0; i < RX_LENGTH; i++)
       {
         HAL_UART_Transmit(&huart2, &controlerVarBuffer[i], sizeof(controlerVarBuffer[i]), 0xFFFF);
@@ -219,9 +196,9 @@ int main(void)
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -229,8 +206,8 @@ void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -241,8 +218,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -252,9 +230,8 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1 | RCC_PERIPHCLK_TIM1;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1;
   PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
-  PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
@@ -262,60 +239,59 @@ void SystemClock_Config(void)
 }
 
 /**
- * @brief TIM1 Initialization Function
- * @param None
- * @retval None
- */
-static void MX_TIM1_Init(void)
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
 {
 
-  /* USER CODE BEGIN TIM1_Init 0 */
+  /* USER CODE BEGIN TIM2_Init 0 */
 
-  /* USER CODE END TIM1_Init 0 */
+  /* USER CODE END TIM2_Init 0 */
 
-  TIM_Encoder_InitTypeDef sConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
 
-  /* USER CODE BEGIN TIM1_Init 1 */
+  /* USER CODE BEGIN TIM2_Init 1 */
 
-  /* USER CODE END TIM1_Init 1 */
-  htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 0;
-  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 2000;
-  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
-  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
-  sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
-  sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
-  sConfig.IC1Filter = 0;
-  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
-  sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
-  sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
-  sConfig.IC2Filter = 0;
-  if (HAL_TIM_Encoder_Init(&htim1, &sConfig) != HAL_OK)
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 7;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 999;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
   {
     Error_Handler();
   }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM1_Init 2 */
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
 
-  /* USER CODE END TIM1_Init 2 */
+  /* USER CODE END TIM2_Init 2 */
+  HAL_TIM_MspPostInit(&htim2);
+
 }
 
 /**
- * @brief TIM3 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_TIM3_Init(void)
 {
 
@@ -349,10 +325,6 @@ static void MX_TIM3_Init(void)
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
@@ -369,13 +341,14 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
+
 }
 
 /**
- * @brief TIM6 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief TIM6 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_TIM6_Init(void)
 {
 
@@ -406,13 +379,14 @@ static void MX_TIM6_Init(void)
   /* USER CODE BEGIN TIM6_Init 2 */
 
   /* USER CODE END TIM6_Init 2 */
+
 }
 
 /**
- * @brief TIM17 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief TIM17 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_TIM17_Init(void)
 {
 
@@ -468,13 +442,14 @@ static void MX_TIM17_Init(void)
 
   /* USER CODE END TIM17_Init 2 */
   HAL_TIM_MspPostInit(&htim17);
+
 }
 
 /**
- * @brief USART1 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART1_UART_Init(void)
 {
 
@@ -502,13 +477,14 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
+
 }
 
 /**
- * @brief USART2 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART2_UART_Init(void)
 {
 
@@ -536,18 +512,19 @@ static void MX_USART2_UART_Init(void)
   /* USER CODE BEGIN USART2_Init 2 */
 
   /* USER CODE END USART2_Init 2 */
+
 }
 
 /**
- * @brief GPIO Initialization Function
- * @param None
- * @retval None
- */
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
-  /* USER CODE END MX_GPIO_Init_1 */
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
@@ -555,279 +532,37 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, MOTER5_DIR_Pin|LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LimitSW1_Pin LimitSW2_Pin */
-  GPIO_InitStruct.Pin = LimitSW1_Pin | LimitSW2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, MOTER1_DIR_Pin|MOTER4_DIR_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : LED_Pin */
-  GPIO_InitStruct.Pin = LED_Pin;
+  /*Configure GPIO pins : MOTER5_DIR_Pin LED_Pin MOTER2_DIR_Pin MOTER3_DIR_Pin */
+  GPIO_InitStruct.Pin = MOTER5_DIR_Pin|LED_Pin|MOTER2_DIR_Pin|MOTER3_DIR_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
-  /* USER CODE END MX_GPIO_Init_2 */
+  /*Configure GPIO pins : MOTER1_DIR_Pin MOTER4_DIR_Pin */
+  GPIO_InitStruct.Pin = MOTER1_DIR_Pin|MOTER4_DIR_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
 
-/**
- * @brief Control functions for differential two-wheel
- * @retval None
- *
- * @param Horizontal Horizontal axis value of stick
- * @param vertical Vertical axis value of stick
- */
-void WheelPowControl(double Horizontal, double Vartical)
-{
-  const int STICK_CENTER_POSITION = 0x40;
-  double leftWheelPow;
-  double rightWheelPow;
-  double radian;
-  Horizontal -= (double)STICK_CENTER_POSITION;
-  Vartical -= (double)STICK_CENTER_POSITION;
-  radian = atan2(Horizontal, Vartical);
-  double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
-  powerGain = (powerGain >= 1) ? 1 : powerGain;
-  rightWheelPow = 500 + ((powerGain * 500) * sin(radian - M_3PI_4));
-  leftWheelPow = 500 + ((powerGain * 500) * sin(radian + M_3PI_4));
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, rightWheelPow);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, leftWheelPow);
-}
-
-void DecodeControlerVarBuffer(uint8_t *controlerVarBuffer)
-{
-  cntState.Horizontal = controlerVarBuffer[1];
-  cntState.Vartical = controlerVarBuffer[2];
-  if (controlerVarBuffer[3] & (1 << 0))
-  {
-    cntState.buttonSW_1 = 1;
-  }
-  else
-  {
-    cntState.buttonSW_1 = 0;
-  }
-  if (controlerVarBuffer[3] & (1 << 1))
-  {
-    cntState.buttonSW_2 = 1;
-  }
-  else
-  {
-    cntState.buttonSW_2 = 0;
-  }
-  if (controlerVarBuffer[3] & (1 << 2))
-  {
-    cntState.buttonSW_3 = 1;
-  }
-  else
-  {
-    cntState.buttonSW_3 = 0;
-  }
-  if (controlerVarBuffer[3] & (1 << 3))
-  {
-    cntState.buttonSW_4 = 1;
-  }
-  else
-  {
-    cntState.buttonSW_4 = 0;
-  }
-  if (controlerVarBuffer[3] & (1 << 4))
-  {
-    cntState.toggleSW = 1;
-  }
-  else
-  {
-    cntState.toggleSW = 0;
-  }
-}
-
-#ifdef ROBOT2_1
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-1 (collecting the box)
- * @retval None
- *
- * @param Data
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500; // for locking mechanism
-  static uint16_t powerB = 500; // for collection arm
-  static uint16_t powerC = 500; // for vacuume pump
-  int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-  int limSwState2 = HAL_GPIO_ReadPin(LimitSW2_GPIO_Port, LimitSW2_Pin);
-  uint32_t encoderVal = TIM1->CNT; //(0~2000)
-  static uint8_t swState1, swState2, lastSwState1, lastSwState2;
-
-  // HAL_UART_Transmit(&huart2, &encoderVal, sizeof(encoderVal), 0xFFFF);
-
-  /* for locking mechanism */
-  if (Data->buttonSW_4 != lastSwState1)
-  {
-    if (Data->buttonSW_4)
-    {
-      swState1 = !swState1;
-    }
-    lastSwState1 = Data->buttonSW_4;
-  }
-  if (swState1 && !limSwState1)
-  {
-    powerA = 0;
-  }
-  else if (!swState1 && !limSwState2)
-  {
-    powerA = 1000;
-  }
-  else
-  {
-    powerA = 500;
-  }
-
-  /* for collection arm */
-  if (Data->buttonSW_1 != Data->buttonSW_2)
-  {
-    if (Data->buttonSW_1 && encoderVal <= 1000 || encoderVal >= 1900)
-    {
-      powerB = 800;
-    }
-    else if (Data->buttonSW_2 && encoderVal >= 50)
-    {
-      powerB = 200;
-    }
-    else
-    {
-      powerB = 500;
-    }
-  }
-  else
-  {
-    powerB = 500;
-  }
-
-  /* for vacuume pump */
-  if (Data->buttonSW_3 != lastSwState2)
-  {
-    if (Data->buttonSW_3)
-    {
-      swState2 = !swState2;
-    }
-    lastSwState2 = Data->buttonSW_3;
-  }
-  if (swState2)
-  {
-    powerC = 1000;
-  }
-  else
-  {
-    powerC = 500;
-  }
-
-  /* set duty ratio */
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
-  __HAL_TIM_SET_COMPARE(&htim17, TIM_CHANNEL_1, powerC);
-}
-#endif /*ROBOT2_1*/
-
-#ifdef ROBOT2_2
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-2 (collecting the ball)
- * @retval none
- *
- * @param Data
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500; // for belt
-  static uint16_t powerB = 500; // for roller
-
-  if (Data->buttonSW_1 != Data->buttonSW_2)
-  {
-    if (Data->buttonSW_1)
-    {
-      powerA = 400;
-      powerB = 350;
-    }
-    else if (Data->buttonSW_2)
-    {
-      powerA = 600;
-      powerB = 650;
-    }
-    else if (Data->buttonSW_3)
-    {
-      powerA = 0;
-      powerB = 350;
-    }
-  }
-  else
-  {
-    powerA = 500;
-    powerB = 500;
-  }
-
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
-}
-#endif /*ROBOT2_2*/
-
-#ifdef ROBOT2_3
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-3 (landing only)
- * @retval None
- * @param Data
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500;
-  if (Data->buttonSW_1 != Data->buttonSW_2)
-  {
-    if (Data->buttonSW_1)
-    {
-      powerA = 0;
-    }
-    if (Data->buttonSW_2)
-    {
-      powerA = 1000;
-    }
-  }
-  else
-  {
-    powerA = 500;
-  }
-
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-}
-#endif /*ROBOT2_3*/
-
-#ifdef ROBOT2_4
-/**
- * @brief This fanction is proglam for the robot2-X
- * @note for the robot2-4 (not use this function)
- * @retval None
- * @param paramA
- * @param paramB
- */
-void IndividualOpelation(inputState *Data)
-{
-  static uint16_t powerA = 500;
-  static uint16_t powerB = 500;
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, powerA);
-  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, powerB);
-}
-#endif /*ROBOT2_4*/
 /* USER CODE END 4 */
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -839,14 +574,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef USE_FULL_ASSERT
+#ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
