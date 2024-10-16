@@ -27,4 +27,4 @@
 1790	2750	7471306834028349	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c.obj	94fd7c8986776d91
 1865	2623	7471306832857778	CMakeFiles/2024robocon_robot2.dir/Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c.obj	fc6485e7b274fe99
 521	1064	7498878247921854	2024robocon_robot2.elf	dafb22ff70cde030
-58	1503	7503301273245267	build.ninja	b13fb9138834be15
+58	1503	7507702029153989	build.ninja	b13fb9138834be15

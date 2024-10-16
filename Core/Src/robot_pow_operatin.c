@@ -40,9 +40,10 @@ void powerConverter(TIM_HandleTypeDef *htimx, int pin, int pow)
 
 /**
  * @brief Init moter power to 0.
- * 
+ *
  */
-void MoterPowInit(){
+void MoterPowInit()
+{
     __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, 0);
@@ -95,7 +96,7 @@ void IndividualOpelation(inputState *Data)
 {
     static uint16_t powerA = 500; // for locking mechanism
     static uint16_t powerB = 500; // for collection arm
-    static uint16_t powerC = 500; // for vacuume pump
+    //static uint16_t powerC = 500; // for vacuume pump
     // int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
     // static uint8_t swState1 = 0, lastSwState1 = 0;
     static uint8_t swState2 = 0, lastSwState2 = 0;
@@ -104,6 +105,10 @@ void IndividualOpelation(inputState *Data)
     if (Data->buttonSW_4)
     {
         powerA = 0;
+    }
+    else if(Data->buttonSW_3&&Data->buttonSW_4)
+    {
+        powerA = 1000;
     }
     else
     {
@@ -132,6 +137,7 @@ void IndividualOpelation(inputState *Data)
     }
 
     /* for vacuume pump */
+    /*
     if (Data->buttonSW_3 != lastSwState2)
     {
         if (Data->buttonSW_3)
@@ -147,12 +153,12 @@ void IndividualOpelation(inputState *Data)
     else
     {
         powerC = 500;
-    }
+    }*/
 
     /* set duty ratio */
     powerConverter(&htim3, TIM_CHANNEL_3, powerA);
     powerConverter(&htim3, TIM_CHANNEL_4, powerB);
-    powerConverter(&htim17, TIM_CHANNEL_1, powerC);
+    //powerConverter(&htim17, TIM_CHANNEL_1, powerC);
 }
 #endif /*ROBOT2_1*/
 
