@@ -96,17 +96,17 @@ void IndividualOpelation(inputState *Data)
 {
     static uint16_t powerA = 500; // for locking mechanism
     static uint16_t powerB = 500; // for collection arm
-    //static uint16_t powerC = 500; // for vacuume pump
-    // int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
-    // static uint8_t swState1 = 0, lastSwState1 = 0;
+    // static uint16_t powerC = 500; // for vacuume pump
+    //  int limSwState1 = HAL_GPIO_ReadPin(LimitSW1_GPIO_Port, LimitSW1_Pin);
+    //  static uint8_t swState1 = 0, lastSwState1 = 0;
     static uint8_t swState2 = 0, lastSwState2 = 0;
 
     /* for locking mechanism */
-    if (!Data->buttonSW_3&&Data->buttonSW_4)
+    if (!Data->buttonSW_3 && Data->buttonSW_4)
     {
         powerA = 0;
     }
-    else if(Data->buttonSW_3&&Data->buttonSW_4)
+    else if (Data->buttonSW_3 && Data->buttonSW_4)
     {
         powerA = 1000;
     }
@@ -158,7 +158,7 @@ void IndividualOpelation(inputState *Data)
     /* set duty ratio */
     powerConverter(&htim3, TIM_CHANNEL_3, powerA);
     powerConverter(&htim3, TIM_CHANNEL_4, powerB);
-    //powerConverter(&htim17, TIM_CHANNEL_1, powerC);
+    // powerConverter(&htim17, TIM_CHANNEL_1, powerC);
 }
 #endif /*ROBOT2_1*/
 
@@ -187,24 +187,25 @@ void IndividualOpelation(inputState *Data)
     }
     if (swState1)
     {
-        if (powerA >= 990)
+        if (powerA <= 10)
         {
-            powerA = 1000;
+            powerA = 0;
         }
         else
         {
-            powerA += 2;
+            powerA -= 2;
         }
     }
     else
     {
-        if (powerA <= 510)
+        
+        if (powerA >= 490)
         {
             powerA = 500;
         }
         else
         {
-            powerA -= 2;
+            powerA += 2;
         }
     }
 
