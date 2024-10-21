@@ -102,7 +102,7 @@ void IndividualOpelation(inputState *Data)
     static uint8_t swState2 = 0, lastSwState2 = 0;
 
     /* for locking mechanism */
-    if (Data->buttonSW_4)
+    if (!Data->buttonSW_3&&Data->buttonSW_4)
     {
         powerA = 0;
     }
