@@ -187,25 +187,24 @@ void IndividualOpelation(inputState *Data)
     }
     if (swState1)
     {
-        if (powerA <= 10)
+        if (powerA >= 990)
         {
-            powerA = 0;
+            powerA = 1000;
         }
         else
         {
-            powerA -= 2;
+            powerA += 2;
         }
     }
     else
     {
-        
-        if (powerA >= 490)
+        if (powerA <= 510)
         {
             powerA = 500;
         }
         else
         {
-            powerA += 2;
+            powerA -= 2;
         }
     }
 
