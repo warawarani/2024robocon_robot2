@@ -74,8 +74,13 @@ void WheelPowControl(double Horizontal, double Vartical)
     radian = atan2(Horizontal, Vartical);
     double powerGain = (hypot(Vartical, Horizontal) / (2 * STICK_CENTER_POSITION));
     powerGain = (powerGain >= 1) ? 1 : powerGain;
+#ifndef ROBOT2_2
     rightWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian + M_PI)));
     leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
+#else
+    rightWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian + M_PI)));
+    leftWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
+#endif
     rightWheelPow = (rightWheelPow < 0) ? 0 : (rightWheelPow > 1000) ? 1000
                                                                      : rightWheelPow;
     leftWheelPow = (leftWheelPow < 0) ? 0 : (leftWheelPow > 1000) ? 1000
