@@ -198,7 +198,7 @@ void IndividualOpelation(inputState *Data)
         }
         else
         {
-            powerA += 2;
+            powerA += 3;
         }
     }
     else
