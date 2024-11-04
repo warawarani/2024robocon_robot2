@@ -154,7 +154,7 @@ int main(void)
       IndividualOpelation(&cntState);
     }
     
-    if (stateCount >= 50)
+    if (stateCount >= 100)
     {
       cntState.Horizontal = 0x40;
       cntState.Vartical = 0x40;
