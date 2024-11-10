@@ -51,8 +51,8 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint32_t timerCount;
-uint16_t stateCount;
+uint32_t timerCount=0;
+uint16_t stateCount=100;
 uint8_t timerFlag = 0;
 
 /* USER CODE END PV */

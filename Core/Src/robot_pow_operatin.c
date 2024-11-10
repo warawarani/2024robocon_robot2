@@ -76,10 +76,10 @@ void WheelPowControl(double Horizontal, double Vartical)
     powerGain = (powerGain >= 1) ? 1 : powerGain;
 #ifndef ROBOT2_2
     rightWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian + M_PI)));
-    leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
+    leftWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
 #else
     rightWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian - M_3PI_4) - 0.35 * sin(radian + M_PI)));
-    leftWheelPow = 500 - ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
+    leftWheelPow = 500 + ((powerGain * 500) * 1 * (sin(radian + M_3PI_4) - 0.35 * sin(radian + M_PI)));
 #endif
     rightWheelPow = (rightWheelPow < 0) ? 0 : (rightWheelPow > 1000) ? 1000
                                                                      : rightWheelPow;
@@ -125,11 +125,11 @@ void IndividualOpelation(inputState *Data)
     {
         if (Data->buttonSW_1)
         {
-            powerB = 750;
+            powerB = 700;
         }
         else if (Data->buttonSW_2)
         {
-            powerB = 250;
+            powerB = 300;
         }
         else\
         {

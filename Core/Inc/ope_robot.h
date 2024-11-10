@@ -19,8 +19,8 @@ typedef struct
 } inputState;
 
 
-#define ROBOT2_1
-//#define ROBOT2_2
+//#define ROBOT2_1
+#define ROBOT2_2
 //#define ROBOT2_3
 //#define ROBOT2_4
 
